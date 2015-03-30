@@ -4,11 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: 
-  name: "pipi kft"
-  address: "2800 Tb"
-  email: pipi@pipi.hu
-two:
-  name: "elso bt"
-  address: "8000 Szfvar"
-  email: "elso@elso.hu"
+
+pipi: 
+    name: "pipi kft"
+    address: "2800 Tb"
+    email: pipi@pipi.hu
+elso:
+    name: "elso bt"
+    address: "8000 Szfvar"
+    email: "elso@elso.hu"

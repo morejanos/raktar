@@ -4,14 +4,17 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  lname: "Gabor"
-  fname: "Valaki"
-  email: gabor@gabor.hu
-  password: 12345
-  
-two:
-  lname: "Peter"
-  fname: "Mas"
-  email: peter@peter.hu
-  password: 789
+
+gabi:
+    lname: "Gabor"
+    fname: "Valaki"
+    email: gabor@gabor.hu
+    password: 12345
+    permission: admin
+
+peti:
+    lname: "Peter"
+    fname: "Mas"
+    email: peter@peter.hu
+    password: 789
+    permission: worker

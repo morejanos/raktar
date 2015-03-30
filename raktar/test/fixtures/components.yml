@@ -5,22 +5,21 @@
 # below each fixture, per the syntax in the comments below
 #
 
-#one:
-#        name:
-#        partnumber:
-#        power:
-#        voltage:
-#        current:
-#        resistance:
-#        dimension:
-#        temperature:
-#        capacity:
-#        comment:
-#        criticalNrOfPieces:
-#        packaging_id:
-#        manufacturer_id:
-#        user_id: 
-#        type_id:
+one:
+        name: R15
+        partnumber: 123
+        power: 4 W
+        voltage: nil
+        current: nil
+        resistance: 13 Ohm
+        dimension: 
+        temperature:
+        capacity:
+        comment:
+        inventory: 5
+        criticalNrOfPieces: 10
+        packaging: dip
+        manufacturer: pipi
+        user: peti
+        type: ell
 
-two: {}
-#  column: value

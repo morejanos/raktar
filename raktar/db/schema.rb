@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150329154902) do
   create_table "components", force: :cascade do |t|
     t.string   "name"
     t.string   "partnumber"
+    t.integer  "inventory"
     t.string   "power"
     t.string   "voltage"
     t.string   "current"

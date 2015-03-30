@@ -4,4 +4,9 @@ class Component < ActiveRecord::Base
     belongs_to :manufacturer
     belongs_to :user
 
+    validates :name, presence: true
+    validates :partnumber, uniqueness: true
+    validates :user_id, presence: true
+    validates :inventory, presence: true
+    
 end
