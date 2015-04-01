@@ -6,6 +6,8 @@ class Component < ActiveRecord::Base
 
     validates :name, presence: true
     validates :user_id, presence: true
-    validates :inventory, presence: true
-    
+    validates :inventory, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+   
+    scope :stock, -> { where("inventory > 0") }
+
 end

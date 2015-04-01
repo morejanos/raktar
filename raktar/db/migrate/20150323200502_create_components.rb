@@ -11,6 +11,7 @@ class CreateComponents < ActiveRecord::Migration
       t.string :dimension
       t.string :temperature
       t.string :capacity
+      t.string :location
       t.string :comment
       t.integer :criticalNrOfPieces
 
