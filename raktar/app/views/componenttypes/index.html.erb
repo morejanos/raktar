@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Componenttypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @componenttypes.each do |componenttype| %>
+      <tr>
+        <td><%= componenttype.name %></td>
+        <td><%= link_to 'Show', componenttype %></td>
+        <td><%= link_to 'Edit', edit_componenttype_path(componenttype) %></td>
+        <td><%= link_to 'Destroy', componenttype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Componenttype', new_componenttype_path %>

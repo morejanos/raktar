@@ -1,0 +1,21 @@
+<%= form_for(@componenttype) do |f| %>
+  <% if @componenttype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@componenttype.errors.count, "error") %> prohibited this componenttype from being saved:</h2>
+
+      <ul>
+      <% @componenttype.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
