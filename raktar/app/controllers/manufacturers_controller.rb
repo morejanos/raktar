@@ -1,0 +1,2 @@
+class ManufacturersController < ApplicationController
+end

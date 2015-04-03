@@ -1,0 +1,2 @@
+class PackagingsController < ApplicationController
+end
