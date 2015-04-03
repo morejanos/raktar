@@ -18,7 +18,7 @@ class CreateComponents < ActiveRecord::Migration
       t.integer :packaging_id
       t.integer :manufacturer_id
       t.integer :user_id
-      t.integer :type_id
+      t.integer :componenttype_id
 
       t.timestamps null: false
     end

@@ -1,5 +1,5 @@
 class Component < ActiveRecord::Base
-    belongs_to :type
+    belongs_to :componenttype
     belongs_to :packaging
     belongs_to :manufacturer
     belongs_to :user

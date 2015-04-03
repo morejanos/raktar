@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329154902) do
+ActiveRecord::Schema.define(version: 20150403095724) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -30,9 +30,15 @@ ActiveRecord::Schema.define(version: 20150329154902) do
     t.integer  "packaging_id"
     t.integer  "manufacturer_id"
     t.integer  "user_id"
-    t.integer  "type_id"
+    t.integer  "componenttype_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "componenttypes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "manufacturers", force: :cascade do |t|
@@ -52,12 +58,6 @@ ActiveRecord::Schema.define(version: 20150329154902) do
   end
 
   create_table "permissions", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

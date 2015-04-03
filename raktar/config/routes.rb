@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :componenttypes
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
     resources :manufacturers
     resources :packagings
     resources :users
+    resources :componenttypes
 
   # Example resource route with options:
   #   resources :products do

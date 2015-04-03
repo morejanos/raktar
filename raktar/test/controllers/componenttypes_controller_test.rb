@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ComponenttypesControllerTest < ActionController::TestCase
   setup do
-    @componenttype = componenttypes(:one)
+    @componenttype = componenttypes(:kondi)
   end
 
   test "should get index" do

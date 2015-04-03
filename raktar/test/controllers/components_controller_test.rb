@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ComponentsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+# TODO
+    test "the " do
+     assert true
+   end
 end
