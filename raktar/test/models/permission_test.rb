@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class PermissionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+    test "should not save without a name field" do
+        per = Permission.new
+        assert_not per.save
+    end
 end
