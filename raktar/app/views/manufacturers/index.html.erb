@@ -1,1 +1,28 @@
-Manufacturers index action
+
+<p id="notice"><%= notice %></p>
+
+<h1>Gyártók Listája</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Név</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @manufacturers.each do |manufacturer| %>
+      <tr>
+        <td><%= manufacturer.name %></td>
+        <td><%= link_to 'Megnéz', manufacturer %></td>
+        <td><%= link_to 'Szerkeszt', edit_manufacturer_path(manufacturer) %></td>
+        <td><%= link_to 'Töröl', manufacturer, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt gyártót?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Új gyártó felvétele', new_manufacturer_path %>

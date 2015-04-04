@@ -1,1 +1,29 @@
-Manufacturers show action <%= params[:id]%>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gyártó neve:</strong>
+  <%= @manufacturer.name %>
+</p>
+
+<p>
+  <strong>Kapcsolattartó személy:</strong>
+  <%= @manufacturer.contactPerson %>
+</p>
+
+<p>
+  <strong>Címe:</strong>
+  <%= @manufacturer.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @manufacturer.email %>
+</p>
+
+<p>
+  <strong>Telefon:</strong>
+  <%= @manufacturer.phone %>
+</p>
+
+<%= link_to 'Szerkeszt', edit_manufacturer_path(@manufacturer) %> |
+<%= link_to 'Vissza', manufacturers_path %>
