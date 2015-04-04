@@ -1,2 +1,27 @@
-Packaging index action
+<p id="notice"><%= notice %></p>
 
+<h1>Tokozások listázása</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @packagings.each do |packaging| %>
+      <tr>
+        <td><%= packaging.name %></td>
+        <td><%= link_to 'Megnéz', packaging %></td>
+        <td><%= link_to 'Szerkeszt', edit_packaging_path(packaging) %></td>
+        <td><%= link_to 'Töröl', packaging, method: :delete, data: { confirm: 'Biztosan törölni szeretné?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Új tokozás', new_packaging_path %>

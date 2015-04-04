@@ -1,0 +1,21 @@
+<%= form_for(@packaging) do |f| %>
+  <% if @packaging.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@packaging.errors.count, "error") %> enél a tokozásnál a következő hibák léptek fel:</h2>
+
+      <ul>
+      <% @packaging.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Mentés"%>
+  </div>
+<% end %>

@@ -1,2 +1,9 @@
-Packaging show action
+<p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Tokozás elnevezése:</strong>
+  <%= @packaging.name %>
+</p>
+
+<%= link_to 'Szerkeszt', edit_packaging_path(@packaging) %> |
+<%= link_to 'Vissza', packagings_path %>
