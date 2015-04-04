@@ -1,3 +1,28 @@
-<h1>Components Index action</h1>
 
+<p id="notice"><%= notice %></p>
 
+<h1>Készlet</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @components.each do |component| %>
+      <tr>
+        <td><%= component.name %></td>
+        <td><%= link_to 'Megnéz', component %></td>
+        <td><%= link_to 'Szerkeszt', edit_component_path(component) %></td>
+        <td><%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt gyártót?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Új alkatrész felvétele', new_component_path %>

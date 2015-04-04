@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :packagings
     resources :users
     resources :componenttypes
+    #resources :permissions
 
   # Example resource route with options:
   #   resources :products do

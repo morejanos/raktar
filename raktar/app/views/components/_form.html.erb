@@ -1,0 +1,55 @@
+<%= form_for(@component) do |f| %>
+  <% if @component.errors.any? %>
+    <div id="error_explanation">
+      <h2> Az alkatrész mentése közben a következő hibák léptek fel:</h2>
+
+      <ul>
+      <% @component.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Megnevezés" %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label "Alktrész száma" %><br>
+    <%= f.text_field :partnumber %><br>
+    <%= f.label "Készenléti darabszám" %><br>
+    <%= f.text_field :inventory %><br>
+    <%= f.label "Rendeléshez kritikus darabszám" %><br>
+    <%= f.text_field :criticalNrOfPieces %><br>
+
+    <%= f.label "Gyártó" %><br>
+    <%= f.collection_select(:manufacturer_id, @manufacturers, :id, :name, :include_blank => "Válassz") %><br>
+    <%= f.label "Alkatrész típusa" %><br>
+    <%= f.collection_select(:componenttype_id, @componenttypes, :id, :name, :include_blank => "Válassz") %><br>
+
+
+    <%= f.label "Tokozás" %><br>
+    <%= f.collection_select(:packaging_id, @packagings, :id, :name, :include_blank => "Válassz") %><br>
+
+    <%= f.label "Teljesítmény" %><br>
+    <%= f.text_field :power %><br>
+    <%= f.label "Feszültség" %><br>
+    <%= f.text_field :voltage %><br>
+    <%= f.label "Áram" %><br>
+    <%= f.text_field :current %><br>
+    <%= f.label "Ellenállás" %><br>
+    <%= f.text_field :resistance %><br>
+    <%= f.label "Méretei" %><br>
+    <%= f.text_field :dimension %><br>
+    <%= f.label "Hőmérséklet" %><br>
+    <%= f.text_field :temperature %><br>
+    <%= f.label "Kapacitás" %><br>
+    <%= f.text_field :capacity %><br>
+    <%= f.label "Raktári lokáció" %><br>
+    <%= f.text_field :location %><br>
+    <%= f.label "Megjegyzés" %><br>
+    <%= f.text_field :comment %><br>
+  </div>
+  <div class="actions">
+    <%= f.submit "Mentés" %>
+  </div>
+<% end %>

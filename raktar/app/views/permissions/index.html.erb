@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jogosultságok listázása</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Jogosultság</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @permissions.each do |permission| %>
+      <tr>
+        <td><%= permission.name %></td>
+        <td><%= link_to 'Megnéz', permission %></td>
+        <td><%= link_to 'Szerkeszt', edit_permission_path(permission) %></td>
+        <td><%= link_to 'Töröl', permission, method: :delete, data: { confirm: 'Biztos benne, hogy törli?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Új jogosultság', new_permission_path %>

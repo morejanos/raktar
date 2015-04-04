@@ -1,0 +1,21 @@
+<%= form_for(@permission) do |f| %>
+  <% if @permission.errors.any? %>
+    <div id="error_explanation">
+      <h2>A következő <%= pluralize(@permission.errors.count, "error") %> léptek fel:</h2>
+
+      <ul>
+      <% @permission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Jogosultág neve" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Mentés" %>
+  </div>
+<% end %>

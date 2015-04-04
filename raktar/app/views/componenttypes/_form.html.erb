@@ -1,7 +1,7 @@
 <%= form_for(@componenttype) do |f| %>
   <% if @componenttype.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@componenttype.errors.count, "error") %> prohibited this componenttype from being saved:</h2>
+      <h2>A következő <%= pluralize(@componenttype.errors.count, "error") %> megakadályozták a mentést:</h2>
 
       <ul>
       <% @componenttype.errors.full_messages.each do |message| %>
@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label "Alkatrész típusa" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Mentés" %>
   </div>
 <% end %>

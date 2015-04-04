@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Jogosultság neve:</strong>
+  <%= @permission.name %>
+</p>
+
+<%= link_to 'Szerkeszt', edit_permission_path(@permission) %> |
+<%= link_to 'Vissza', permissions_path %>

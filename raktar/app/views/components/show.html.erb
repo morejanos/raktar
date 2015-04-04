@@ -1,2 +1,29 @@
-<h1>Components show action: <%= params[:id] %> </h1>
+<p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Alkatrész neve:</strong>
+  <%= @component.name %>
+</p>
+
+<p>
+  <strong>Száma:</strong>
+  <%= @component.partnumber %>
+</p>
+
+<p>
+  <strong>Készenléti darabszám:</strong>
+  <%= @component.inventory %>
+</p>
+
+<p>
+  <strong>Rendeléshez kritikus darabszám:</strong>
+  <%= @component.criticalNrOfPieces %>
+</p>
+
+<p>
+  <strong>Gyártó:</strong>
+  <%= @component.manufacturer %>
+</p>
+
+<%= link_to 'Szerkeszt', edit_component_path(@component) %> |
+<%= link_to 'Vissza', components_path %>
