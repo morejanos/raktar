@@ -10,6 +10,7 @@ one:
         partnumber: 123
         power: 4 W
         voltage: nil
+        inductivity: nil
         current: nil
         resistance: 13 Ohm
         dimension: 

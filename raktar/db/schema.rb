@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20150403095724) do
     t.string   "name"
     t.string   "partnumber"
     t.integer  "inventory"
+    t.string   "inductivity"
     t.string   "power"
     t.string   "voltage"
     t.string   "current"

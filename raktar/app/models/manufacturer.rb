@@ -4,6 +4,6 @@ class Manufacturer < ActiveRecord::Base
     validates :email, format: {with: /@/, message: "Invalid Email cím lett megadva."}
 
     def to_s
-        :name
+        name
     end
 end

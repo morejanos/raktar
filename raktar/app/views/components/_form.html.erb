@@ -12,41 +12,45 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Megnevezés" %><br>
+    <%= f.label "Megnevezés" %>
     <%= f.text_field :name %><br>
-    <%= f.label "Alktrész száma" %><br>
+    <%= f.label "Alktrész száma" %>
     <%= f.text_field :partnumber %><br>
-    <%= f.label "Készenléti darabszám" %><br>
+    <%= f.label "Készenléti darabszám" %>
     <%= f.text_field :inventory %><br>
-    <%= f.label "Rendeléshez kritikus darabszám" %><br>
-    <%= f.text_field :criticalNrOfPieces %><br>
-
-    <%= f.label "Gyártó" %><br>
-    <%= f.collection_select(:manufacturer_id, @manufacturers, :id, :name, :include_blank => "Válassz") %><br>
-    <%= f.label "Alkatrész típusa" %><br>
-    <%= f.collection_select(:componenttype_id, @componenttypes, :id, :name, :include_blank => "Válassz") %><br>
-
-
-    <%= f.label "Tokozás" %><br>
-    <%= f.collection_select(:packaging_id, @packagings, :id, :name, :include_blank => "Válassz") %><br>
-
-    <%= f.label "Teljesítmény" %><br>
-    <%= f.text_field :power %><br>
-    <%= f.label "Feszültség" %><br>
-    <%= f.text_field :voltage %><br>
-    <%= f.label "Áram" %><br>
-    <%= f.text_field :current %><br>
-    <%= f.label "Ellenállás" %><br>
-    <%= f.text_field :resistance %><br>
-    <%= f.label "Méretei" %><br>
-    <%= f.text_field :dimension %><br>
-    <%= f.label "Hőmérséklet" %><br>
-    <%= f.text_field :temperature %><br>
-    <%= f.label "Kapacitás" %><br>
-    <%= f.text_field :capacity %><br>
-    <%= f.label "Raktári lokáció" %><br>
+    <%= f.label "Raktári lokáció" %>
     <%= f.text_field :location %><br>
-    <%= f.label "Megjegyzés" %><br>
+    <%= f.label "Alkatrész típusa" %>
+    <%= f.collection_select(:componenttype_id, Componenttype.all, :id, :name, :include_blank => "Válassz") %><br>
+    <%= f.label "Ellenállás" %>
+    <%= f.text_field :resistance %><br>
+    <%= f.label "Kapacitás" %>
+    <%= f.text_field :capacity %><br>
+    <%= f.label "Induktivitás" %>
+    <%= f.text_field :inductivity %><br>
+    <%= f.label "Feszültség" %>
+    <%= f.text_field :voltage %><br>
+    <%= f.label "Áram" %>
+    <%= f.text_field :current %><br>
+    <%= f.label "Teljesítmény" %>
+    <%= f.text_field :power %><br>
+    <%= f.label "Hőmérséklet" %>
+    <%= f.text_field :temperature %><br>
+    <%= f.label "Méretei" %>
+    <%= f.text_field :dimension %><br>
+    <%= f.label "Rendeléshez kritikus darabszám" %>
+    <%= f.text_field :criticalNrOfPieces %><br>
+    <%= f.label "Tokozás" %>
+    <%= f.collection_select(:packaging_id, Packaging.all, :id, :name, :include_blank => "Válassz") %><br>
+
+    <%= f.label "Gyártó" %>
+    <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, :include_blank => "Válassz") %><br>
+    </div>
+
+    <%= f.label "Felhasználó" %>
+    <%= f.collection_select(:user_id, User.all, :id, :name, :include_blank => "Válassz") %><br>
+
+    <%= f.label "Megjegyzés" %>
     <%= f.text_field :comment %><br>
   </div>
   <div class="actions">

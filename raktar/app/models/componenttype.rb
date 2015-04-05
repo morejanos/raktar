@@ -1,5 +1,9 @@
 class Componenttype < ActiveRecord::Base
-   has_many :components
+    has_many :components
 
-   validates :name, presence: true 
+    validates :name, presence: true 
+    
+    def to_s
+        name
+    end
 end

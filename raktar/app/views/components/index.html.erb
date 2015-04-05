@@ -6,7 +6,22 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+        <th>Név</th>
+        <th>Szám</th>
+        <th>Készlet</th>
+        <th>Lokáció</th>
+        <th>Típus</th>
+        <th>Ellenállás</th>
+        <th>Kapacitás</th>
+        <th>Induktivitás</th>
+        <th>Feszültség</th>
+        <th>Áram</th>
+        <th>Teljesítmény</th>
+        <th>Hőmérséklet</th>
+        <th>Méret</th>
+        <th>Értesítési darabszám</th>
+        <th>Tokozás</th>
+        <th>Gyártó</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,6 +30,21 @@
     <% @components.each do |component| %>
       <tr>
         <td><%= component.name %></td>
+        <td><%= component.partnumber %></td>
+        <td><%= component.inventory %></td>
+        <td><%= component.location%></td>
+        <td><%= component.componenttype.name %></td>
+        <td><%= component.resistance %></td>
+        <td><%= component.capacity %></td>
+        <td><%= component.inductivity %></td>
+        <td><%= component.voltage %></td>
+        <td><%= component.current %></td>
+        <td><%= component.power %></td>
+        <td><%= component.temperature %></td>
+        <td><%= component.dimension %></td>
+        <td><%= component.criticalNrOfPieces %></td>
+        <td><%= component.packaging.name %></td>
+        <td><%= component.manufacturer.name %></td>
         <td><%= link_to 'Megnéz', component %></td>
         <td><%= link_to 'Szerkeszt', edit_component_path(component) %></td>
         <td><%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt gyártót?' } %></td>

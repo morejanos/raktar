@@ -4,6 +4,7 @@ class CreateComponents < ActiveRecord::Migration
       t.string :name
       t.string :partnumber
       t.integer :inventory
+      t.string :inductivity
       t.string :power
       t.string :voltage
       t.string :current

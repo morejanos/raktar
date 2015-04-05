@@ -15,9 +15,6 @@ class ComponentsController < ApplicationController
   # GET /components/new
   def new
     @component = Component.new
-    @manufacturers = Manufacturer.all
-    @packagings = Packaging.all
-    @componenttypes = Componenttype.all
   end
 
   # GET /components/1/edit
@@ -27,6 +24,7 @@ class ComponentsController < ApplicationController
   # POST /components
   # POST /components.json
   def create
+      puts component_params
     @component = Component.new(component_params)
 
     respond_to do |format|
@@ -68,9 +66,6 @@ class ComponentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_component
         @component = Component.find(params[:id])
-        @manufacturers = Manufacturer.all
-        @packagings = Packaging.all
-        @componenttypes = Componenttype.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
