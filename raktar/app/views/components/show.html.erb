@@ -91,5 +91,9 @@
   <%= @component.manufacturer %>
 </p>
 
+<p>
+  <strong>Megjegyzés:</strong>
+  <%= @component.comment %>
+</p>
 <%= link_to 'Szerkeszt', edit_component_path(@component) %> |
 <%= link_to 'Vissza', components_path %>

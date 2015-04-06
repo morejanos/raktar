@@ -10,4 +10,7 @@ class Component < ActiveRecord::Base
    
     scope :stock, -> { where("inventory > 0") }
 
+    def to_s
+        name
+    end
 end

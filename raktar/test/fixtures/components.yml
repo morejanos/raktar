@@ -9,9 +9,9 @@ one:
         name: R15
         partnumber: 123
         power: 4 W
-        voltage: nil
-        inductivity: nil
-        current: nil
+        voltage: 10V
+        inductivity: 12mH
+        current: 1A
         resistance: 13 Ohm
         dimension: 
         temperature:
