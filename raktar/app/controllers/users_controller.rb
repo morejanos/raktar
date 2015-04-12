@@ -7,6 +7,13 @@ class UsersController < ApplicationController
   end
 
   def show
+  @joined_on = @user.created_at.to_formatted_s(:short)
+    if @user.current_sign_in_at
+          @last_login = @user.current_sign_in_at.to_formatted_s(:short)
+            else
+                  @last_login = "never"
+
+
   end
 
   def edit
@@ -44,6 +51,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :permission_id, :password, :password_confirmation)
     end
 end

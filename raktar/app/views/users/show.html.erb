@@ -14,5 +14,19 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Regisztrálva:</strong>
+  <%= @joined_on %>
+</p>
+
+<p>
+  <strong>Legutolsó bejelentkezés:</strong>
+  <%= @last_login %>
+</p>
+<p>
+  <strong>Hányszor volt már bejelentkezve:</strong>
+  <%= @user.sign_in_count %>
+</p>
+
 <%= link_to 'Szerkeszt', edit_user_path(@user) %> |
 <%= link_to 'Vissza', users_path %>

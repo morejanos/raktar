@@ -1,4 +1,5 @@
 class PermissionsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /permissions
@@ -10,6 +11,11 @@ class PermissionsController < ApplicationController
   # GET /permissions/1
   # GET /permissions/1.json
   def show
+    if @permission.users.length == 0
+      @assosciated_users = "Senki"
+    else
+      @assosciated_users = @permission.users.map(&:name).join(", ")
+    end
   end
 
   # GET /permissions/new

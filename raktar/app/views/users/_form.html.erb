@@ -18,6 +18,12 @@
     <%= f.text_field :permission %><br>
     <%= f.label "Email:" %>
     <%= f.text_field :email %><br>
+
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, placeholder: "Hagyja üresen, hogy ne változzon" %>
+    </div>
+
   </div>
   <div class="actions">
     <%= f.submit "Mentés" %>
