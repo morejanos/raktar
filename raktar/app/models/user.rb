@@ -3,13 +3,19 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-    belongs_to :permission
 
-    validates :name, presence: true
-    validates :email, presence: true, uniqueness: true
-    validates :permission_id, presence: true
+  before_save :assign_permission
 
-    def to_s
-      name
-    end
+  belongs_to :permission
+
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+
+  def to_s
+    name
+  end
+
+  def assign_permission
+    self.permission = Permission.find_by name: "worker" if self.permission.nil?
+  end
 end

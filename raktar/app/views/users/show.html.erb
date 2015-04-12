@@ -1,0 +1,18 @@
+
+<p>
+  <strong>Alkatrész neve:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Joga:</strong>
+  <%= @user.permission%>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Szerkeszt', edit_user_path(@user) %> |
+<%= link_to 'Vissza', users_path %>
