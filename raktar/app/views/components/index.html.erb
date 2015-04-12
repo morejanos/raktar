@@ -31,7 +31,7 @@
         <td><%= component.partnumber %></td>
         <td><%= component.inventory %></td>
         <td><%= component.location%></td>
-        <td><%= component.componenttype.name %></td>
+        <% unless component.componenttype.nil? %> <td><%= component.componenttype.name %> </td> <% else %> <td> "NA" </td> <% end %>
         <td><%= component.resistance %></td>
         <td><%= component.capacity %></td>
         <td><%= component.inductivity %></td>
@@ -41,8 +41,8 @@
         <td><%= component.temperature %></td>
         <td><%= component.dimension %></td>
         <td><%= component.criticalNrOfPieces %></td>
-        <td><%= component.packaging.name %></td>
-        <td><%= component.manufacturer.name %></td>
+        <% unless component.packaging.nil? %> <td><%= component.packaging.name %> </td> <% else %> <td> "NA" </td> <% end %>
+        <% unless component.manufacturer.nil? %> <td><%= component.manufacturer.name %> </td> <% else %> <td> "NA" </td> <% end %>
         <td><%= link_to 'Megnéz', component %></td>
         <td><%= link_to 'Szerkeszt', edit_component_path(component) %></td>
         <td><%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt gyártót?' } %></td>
