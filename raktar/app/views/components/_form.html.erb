@@ -47,9 +47,8 @@
     <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, :include_blank => "Válassz") %><br>
     </div>
 
-    <%= f.label "Felhasználó" %>
-    <%= f.collection_select(:user_id, User.all, :id, :name, :include_blank => "Válassz") %><br>
-
+    <%= f.label "Legutobbi felhasználó"%>
+    <%= f.label @component.user%><br>
     <%= f.label "Megjegyzés" %>
     <%= f.text_area :comment %><br>
   </div>

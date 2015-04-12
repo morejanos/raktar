@@ -1,4 +1,5 @@
 class ComponentsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_component, only: [:show, :edit, :update, :destroy]
 
   # GET /components
@@ -24,8 +25,9 @@ class ComponentsController < ApplicationController
   # POST /components
   # POST /components.json
   def create
-      puts component_params
     @component = Component.new(component_params)
+
+    @component.user_id = current_user.id
 
     respond_to do |format|
       if @component.save
@@ -41,6 +43,7 @@ class ComponentsController < ApplicationController
   # PATCH/PUT /components/1
   # PATCH/PUT /components/1.json
   def update
+    @component.user_id = current_user.id
     respond_to do |format|
       if @component.update(component_params)
         format.html { redirect_to @component, notice: 'Alkatrész sikeresen frissült.' }

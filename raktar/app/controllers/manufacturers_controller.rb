@@ -1,5 +1,5 @@
 class ManufacturersController < ApplicationController
-
+  before_filter :authenticate_user!
   before_action :set_manufacturer, only: [:show, :edit, :update, :destroy]
 
     def index

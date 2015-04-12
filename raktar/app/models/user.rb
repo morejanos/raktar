@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
-#    validates :permission_id, presence: true
+    validates :permission_id, presence: true
 
     def to_s
       name

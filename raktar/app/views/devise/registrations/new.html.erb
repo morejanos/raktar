@@ -26,6 +26,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :permission %><br />
+    <%= f.collection_select(:permission_id, Permission.all, :id, :name, :include_blank => "Válassz") %><br>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
