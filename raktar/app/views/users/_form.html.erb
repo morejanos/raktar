@@ -16,6 +16,11 @@
     <%= f.text_field :name %><br>
     <%= f.label "Joga:" %>
     <%= f.text_field :permission %><br>
+
+    <td><% if can? :update, @user %> 
+    <%= f.collection_select(:permission_id, Permission.all, :id, :name, :include_blank => "Válassz") %>
+     
+  <% end %></td><br>
     <%= f.label "Email:" %>
     <%= f.text_field :email %><br>
 

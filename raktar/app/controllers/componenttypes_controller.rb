@@ -1,6 +1,6 @@
 class ComponenttypesController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_componenttype, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /componenttypes
   # GET /componenttypes.json
@@ -15,7 +15,6 @@ class ComponenttypesController < ApplicationController
 
   # GET /componenttypes/new
   def new
-    @componenttype = Componenttype.new
   end
 
   # GET /componenttypes/1/edit
@@ -25,7 +24,6 @@ class ComponenttypesController < ApplicationController
   # POST /componenttypes
   # POST /componenttypes.json
   def create
-    @componenttype = Componenttype.new(componenttype_params)
 
     respond_to do |format|
       if @componenttype.save
@@ -63,10 +61,6 @@ class ComponenttypesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_componenttype
-      @componenttype = Componenttype.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def componenttype_params

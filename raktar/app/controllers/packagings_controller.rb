@@ -1,6 +1,6 @@
 class PackagingsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_packaging, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @packagings = Packaging.all
@@ -13,7 +13,6 @@ class PackagingsController < ApplicationController
 
   # GET /packagings/new
   def new
-    @packaging = Packaging.new
   end
 
   # GET /packagings/1/edit
@@ -23,7 +22,6 @@ class PackagingsController < ApplicationController
   # POST /packagings
   # POST /packagings.json
   def create
-    @packaging = Packaging.new(packaging_params)
 
     respond_to do |format|
       if @packaging.save
@@ -61,10 +59,6 @@ class PackagingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_packaging
-      @packaging = Packaging.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def packaging_params

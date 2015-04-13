@@ -14,9 +14,33 @@ class Ability
       can :update, Component
       can :destroy, Component
 
+      can :read, Componenttype
+      can :create, Componenttype
+      can :update, Componenttype
+      can :destroy, Componenttype
+
+      can :read, Packaging
+      can :create, Packaging
+      can :update, Packaging
+      can :destroy, Packaging
+
+      can :read, Manufacturer
+      can :create, Manufacturer
+      can :update, Manufacturer
+      can :destroy, Manufacturer
+
     elsif user.worker?
       can :read, Component
       can :update, Component
+
+      can :read, Componenttype
+      can :update, Componenttype
+
+      can :read, Packaging
+      can :update, Packaging
+
+      can :read, Manufacturer
+      can :update, Manufacturer
     end
  
     # The first argument to `can` is the action you are giving the user

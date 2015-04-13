@@ -1,6 +1,6 @@
 class ManufacturersController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_manufacturer, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
     def index
         @manufacturers = Manufacturer.all
@@ -10,11 +10,9 @@ class ManufacturersController < ApplicationController
     end
 
     def new
-        @manufacturer = Manufacturer.new
     end
 
     def create
-        @manufacturer = Manufacturer.new(manufacturer_params)
 
         respond_to do |format|
             if @manufacturer.save
@@ -52,9 +50,6 @@ class ManufacturersController < ApplicationController
     end
 
     private
-    def set_manufacturer
-        @manufacturer = Manufacturer.find(params[:id])
-    end
 
     def manufacturer_params
         params.require(:manufacturer).permit(:name, :contactPerson, :address, :email, :phone)
