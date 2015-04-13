@@ -1,6 +1,6 @@
 class ComponentsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_component, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /components
   # GET /components.json
@@ -15,7 +15,6 @@ class ComponentsController < ApplicationController
 
   # GET /components/new
   def new
-    @component = Component.new
   end
 
   # GET /components/1/edit
@@ -25,8 +24,6 @@ class ComponentsController < ApplicationController
   # POST /components
   # POST /components.json
   def create
-    @component = Component.new(component_params)
-
     @component.user_id = current_user.id
 
     respond_to do |format|
@@ -66,10 +63,6 @@ class ComponentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_component
-        @component = Component.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params

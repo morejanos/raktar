@@ -18,4 +18,17 @@ class User < ActiveRecord::Base
   def assign_permission
     self.permission = Permission.find_by name: "worker" if self.permission.nil?
   end
+
+  def admin?
+    self.permission.name == "administrator"
+  end
+
+  def worker?
+    self.permission.name == "worker"
+  end
+
+  def poweruser?
+    self.permission.name == "poweruser"
+  end
+
 end

@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+perm = Permission.create([{ name: 'administrator'}, {name: 'worker'}, {name: 'poweruser'}])
+User.create(name: 'Admin', permission: perm.first )

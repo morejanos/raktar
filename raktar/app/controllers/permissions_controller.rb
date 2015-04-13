@@ -1,9 +1,7 @@
 class PermissionsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_permission, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
-  # GET /permissions
-  # GET /permissions.json
   def index
     @permissions = Permission.all
   end
@@ -20,7 +18,6 @@ class PermissionsController < ApplicationController
 
   # GET /permissions/new
   def new
-    @permission = Permission.new
   end
 
   # GET /permissions/1/edit
@@ -30,7 +27,6 @@ class PermissionsController < ApplicationController
   # POST /permissions
   # POST /permissions.json
   def create
-    @permission = Permission.new(permission_params)
 
     respond_to do |format|
       if @permission.save
@@ -68,10 +64,6 @@ class PermissionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_permission
-      @permission = Permission.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def permission_params

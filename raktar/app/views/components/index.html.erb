@@ -43,9 +43,9 @@
         <td><%= component.criticalNrOfPieces %></td>
         <% unless component.packaging.nil? %> <td><%= component.packaging.name %> </td> <% else %> <td> "NA" </td> <% end %>
         <% unless component.manufacturer.nil? %> <td><%= component.manufacturer.name %> </td> <% else %> <td> "NA" </td> <% end %>
-        <td><%= link_to 'Megnéz', component %></td>
-        <td><%= link_to 'Szerkeszt', edit_component_path(component) %></td>
-        <td><%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt gyártót?' } %></td>
+        <td><% if can? :read, component %> <%= link_to 'Megnéz', component %> <% end %> </td> 
+        <td><% if can? :update, component %> <%= link_to 'Szerkeszt', edit_component_path(component) %> <% end %> </td>
+        <td><% if can? :destroy, component %> <%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt gyártót?' } %> <% end %> </td>
       </tr>
     <% end %>
   </tbody>
