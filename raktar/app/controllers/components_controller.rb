@@ -43,6 +43,7 @@ class ComponentsController < ApplicationController
     @component.user_id = current_user.id
     respond_to do |format|
       if @component.update(component_params)
+        Usermailer.criticalNrOfPieces_email(@component).deliver if @component.inventory <= @component.criticalNrOfPieces 
         format.html { redirect_to @component, notice: 'Alkatrész sikeresen frissült.' }
         format.json { render :show, status: :ok, location: @component }
       else
