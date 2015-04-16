@@ -11,12 +11,23 @@ class Component < ActiveRecord::Base
    
     scope :stock, -> { where("inventory > 0") }
 
-    def self.search(search)
-        if search
-            where("name LIKE ?", "%#{search}%")
+    def self.search(search, type)
+
+        if !search.empty?
+          if !type.empty?
+            found = self.where("componenttype_id = ?", "#{type}")
+            found = found.where("name LIKE ? OR partnumber LIKE ? OR inductivity LIKE ? OR power LIKE ? OR voltage LIKE ? OR current LIKE ? OR resistance LIKE ? OR dimension LIKE ? OR temperature LIKE ? OR capacity LIKE ? OR location LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+          else
+            found = self.where("name LIKE ? OR partnumber LIKE ? OR inductivity LIKE ? OR power LIKE ? OR voltage LIKE ? OR current LIKE ? OR resistance LIKE ? OR dimension LIKE ? OR temperature LIKE ? OR capacity LIKE ? OR location LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+
+          end
         else
-            find(:all)
+          if !type.empty?
+            found = where("componenttype_id = ?", "#{type}")
+          end
         end
+
+        found||all
     end
 
     def to_s

@@ -3,8 +3,14 @@
 
 <%= form_tag components_path, :method => 'get' do %>
     <p>
+      <%= field_set_tag do %>
         <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Keresés", name: nil %>
+        <% Componenttype.all.each do |type| %>
+          <%= radio_button_tag(:componenttype, type.id) %>
+          <%= label_tag(:componenttype, type.name) %>
+        <% end %>
+      <% end %>
+      <%= submit_tag "Keresés", name: nil %>
     </p>
 <% end %>
 

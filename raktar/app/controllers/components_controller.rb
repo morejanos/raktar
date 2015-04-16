@@ -5,7 +5,8 @@ class ComponentsController < ApplicationController
   # GET /components
   # GET /components.json
   def index
-    @components = Component.search(params[:search])
+    type = params[:componenttype] || ""
+    @components = Component.search(params[:search], type)
   end
 
   # GET /components/1
