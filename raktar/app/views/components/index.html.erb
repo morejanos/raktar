@@ -4,7 +4,7 @@
 <%= form_tag components_path, :method => 'get' do %>
     <p>
       <%= field_set_tag do %>
-        <%= text_field_tag :search, params[:search], placeholder: 'Írja ide a keresett szót...' %>
+        <%= search_field_tag :search, params[:search], placeholder: 'Írja ide a keresett szót...' %>
         <%= submit_tag "Keresés", name: nil %>
         <% Componenttype.all.each do |type| %>
           <%= radio_button_tag(:componenttype, type.id, (type.id == session[:componenttype].to_i)) %>
@@ -17,22 +17,22 @@
 <table>
   <thead>
     <tr>
-        <th>Név</th>
-        <th>Szám</th>
-        <th>Készlet</th>
-        <th>Lokáció</th>
-        <th>Típus</th>
-        <th>Ellenállás</th>
-        <th>Kapacitás</th>
-        <th>Induktivitás</th>
-        <th>Feszültség</th>
-        <th>Áram</th>
-        <th>Teljesítmény</th>
-        <th>Hőmérséklet</th>
-        <th>Méret</th>
-        <th>Értesítési darabszám</th>
-        <th>Tokozás</th>
-        <th>Gyártó</th>
+      <th><%= sortable "name", "Név" %></th>
+        <th><%= sortable "partnumber", "Szám" %></th>
+        <th><%= sortable "inventory", "Készlet" %></th>
+        <th><%= sortable "location", "Lokáció" %></th>
+        <th><%= sortable "componenttype_id", "Típus" %></th>
+        <th><%= sortable "resistance", "Ellenállás" %></th>
+        <th><%= sortable "capacity", "Kapacitás" %></th>
+        <th><%= sortable "inductivity", "Induktivitás" %></th>
+        <th><%= sortable "voltage", "Feszültség" %></th>
+        <th><%= sortable "current", "Áram" %></th>
+        <th><%= sortable "power", "Teljesítmény" %></th>
+        <th><%= sortable "temperature", "Hőmérséklet" %></th>
+        <th><%= sortable "dimension", "Méret" %></th>
+        <th><%= sortable "criticalNrOfPieces", "Értesítési darabszám" %></th>
+        <th><%= sortable "packaging_id", "Tokozás" %></th>
+        <th><%= sortable "manufacturer_id", "Gyártó" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>

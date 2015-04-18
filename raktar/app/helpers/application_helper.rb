@@ -11,4 +11,5 @@ module ApplicationHelper
         str += '</div>'
         raw(str)
     end
+
 end

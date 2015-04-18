@@ -1,5 +1,6 @@
 class ComponentsController < ApplicationController
   before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
   load_and_authorize_resource
 
   # GET /components
@@ -8,7 +9,7 @@ class ComponentsController < ApplicationController
     update_search_session(params[:search])
     update_componenttype_session(params[:componenttype])
     
-    @components = Component.search(session[:search], session[:componenttype])
+    @components = Component.search(session[:search], session[:componenttype]).order(sort_column + " " + sort_direction)
   end
 
   # GET /components/1
@@ -74,12 +75,14 @@ class ComponentsController < ApplicationController
     end
 
     def update_search_session(search)
-      if session[:search].nil? && !search.empty? then
+      if session[:search].nil? && !search.nil? && !search.empty? then
         session[:search] = search
-      elsif session[:search].nil? then
+      elsif session[:search].nil? && !search.nil? then
         session[:search] = search
-      elsif session[:search] != search then
+      elsif !search.nil? && session[:search] != search then
         session[:search] = search
+      else
+        session[:search] ||= ""
       end
     end
     
@@ -87,10 +90,17 @@ class ComponentsController < ApplicationController
       if session[:componenttype].nil? && !componenttype.nil? then
         session[:componenttype] = componenttype
       elsif session[:componenttype].nil? || componenttype.nil? then
-        session[:componenttype] = ""
+        session[:componenttype] ||= ""
       elsif session[:componenttype] != componenttype then
         session[:componenttype] = componenttype
       end
     end
 
+  def sort_column
+    Component.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end  
 end

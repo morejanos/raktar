@@ -13,8 +13,8 @@ class Component < ActiveRecord::Base
 
     def self.search(search, type)
 
-        if !search.empty?
-          if !type.empty?
+        if !search.nil? && !search.empty?
+          if !type.nil? && !type.empty?
             found = self.where("componenttype_id = ?", "#{type}")
             found = found.where("name LIKE ? OR partnumber LIKE ? OR inductivity LIKE ? OR power LIKE ? OR voltage LIKE ? OR current LIKE ? OR resistance LIKE ? OR dimension LIKE ? OR temperature LIKE ? OR capacity LIKE ? OR location LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
           else
@@ -22,7 +22,7 @@ class Component < ActiveRecord::Base
 
           end
         else
-          if !type.empty?
+          if !type.nil? && !type.empty?
             found = where("componenttype_id = ?", "#{type}")
           end
         end
