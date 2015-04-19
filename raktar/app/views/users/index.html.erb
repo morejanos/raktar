@@ -1,25 +1,26 @@
 
 <h1>Felhasználók</h1>
 
-<table>
+<table id="datatables" >
   <thead>
     <tr>
-        <th>Név</th>
-        <th>Jogok</th>
-        <th>Email</th>
-      <th colspan="3"></th>
+      <th>Név</th>
+      <th>Jogok</th>
+      <th>Email</th>
+      <% if can? :read, @users.first %> <th>Megnéz</th> <% end %>
+      <% if can? :update, @users.first %> <th>Szekeszt</th> <% end %>
+      <% if can? :destroy, @users.first %> <th>Töröl</th> <% end %>
     </tr>
   </thead>
-
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
         <td><%= user.permission %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Megnéz', user %></td>
-        <td><%= link_to 'Szerkeszt', edit_user_path(user) %></td>
-        <td><%= link_to 'Töröl', user, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné?' } %></td>
+        <% if can? :read, user %> <td> <%= link_to 'Megnéz', user %> </td> <% end %>
+        <% if can? :update, user %> <td> <%= link_to 'Szerkeszt', edit_user_path(user) %></td> <% end %>
+        <% if can? :destroy, user %> <td> <%= link_to 'Töröl', user, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,11 +1,13 @@
 
-<h1>Jogosultságok listázása</h1>
+<h1>Jogosultságok listája</h1>
 
-<table>
+<table id="datatables">
   <thead>
     <tr>
       <th>Jogosultság</th>
-      <th colspan="3"></th>
+      <% if can? :read, @parmissions.first %> <th>Megnéz</th> <% end %>
+      <% if can? :update, @parmissions.first %> <th>Szekeszt</th> <% end %>
+      <% if can? :destroy, @parmissions.first %> <th>Töröl</th> <% end %>
     </tr>
   </thead>
 
@@ -13,14 +15,16 @@
     <% @permissions.each do |permission| %>
       <tr>
         <td><%= permission.name %></td>
-        <td><%= link_to 'Megnéz', permission %></td>
-        <td><%= link_to 'Szerkeszt', edit_permission_path(permission) %></td>
-        <td><%= link_to 'Töröl', permission, method: :delete, data: { confirm: 'Biztos benne, hogy törli?' } %></td>
+        <% if can? :read, permission %> <td> <%= link_to 'Megnéz', permission %> </td> <% end %>
+        <% if can? :update, permission %> <td> <%= link_to 'Szerkeszt', edit_permission_path(permission) %></td> <% end %>
+        <% if can? :destroy, permission %> <td> <%= link_to 'Töröl', permission, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% if can? :create, @permissions.first %>
+  <%= link_to 'Új jogosultság', new_permission_path %>
+<% end %>
 
-<%= link_to 'Új jogosultság', new_permission_path %>

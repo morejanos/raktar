@@ -14,29 +14,30 @@
     </p>
 <% end %>
 
-<table>
+<table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
-      <th><%= sortable "name", "Név" %></th>
-        <th><%= sortable "partnumber", "Szám" %></th>
-        <th><%= sortable "inventory", "Készlet" %></th>
-        <th><%= sortable "location", "Lokáció" %></th>
-        <th><%= sortable "componenttype_id", "Típus" %></th>
-        <th><%= sortable "resistance", "Ellenállás" %></th>
-        <th><%= sortable "capacity", "Kapacitás" %></th>
-        <th><%= sortable "inductivity", "Induktivitás" %></th>
-        <th><%= sortable "voltage", "Feszültség" %></th>
-        <th><%= sortable "current", "Áram" %></th>
-        <th><%= sortable "power", "Teljesítmény" %></th>
-        <th><%= sortable "temperature", "Hőmérséklet" %></th>
-        <th><%= sortable "dimension", "Méret" %></th>
-        <th><%= sortable "criticalNrOfPieces", "Értesítési darabszám" %></th>
-        <th><%= sortable "packaging_id", "Tokozás" %></th>
-        <th><%= sortable "manufacturer_id", "Gyártó" %></th>
-      <th colspan="3"></th>
+      <th> Név </th>
+      <th> Szám </th>
+      <th> Készlet </th>
+      <th> Lokáció</th>
+      <th> Típus </th>
+      <th> Ellenállás</th>
+      <th> Kapacitás </th>
+      <th> Induktivitás </th>
+      <th> Feszültség </th>
+      <th> Áram </th>
+      <th> Teljesítmény </th>
+      <th> Hőmérséklet </th>
+      <th> Méret </th>
+      <th> Értesítési darabszám </th>
+      <th> Tokozás </th>
+      <th> Gyártó </th>
+      <% if can? :read, @components.first %> <th>Megnéz</th> <% end %>
+      <% if can? :update, @components.first %> <th>Szekeszt</th> <% end %>
+      <% if can? :destroy, @components.first %> <th>Töröl</th> <% end %>
     </tr>
   </thead>
-
   <tbody>
     <% @components.each do |component| %>
       <tr>
@@ -56,14 +57,17 @@
         <td><%= component.criticalNrOfPieces %></td>
         <% unless component.packaging.nil? %> <td><%= link_to component.packaging, component.packaging %> </td> <% else %> <td> "NA" </td> <% end %>
         <% unless component.manufacturer.nil? %> <td><%= link_to component.manufacturer, component.manufacturer %> </td> <% else %> <td> "NA" </td> <% end %>
-        <td><% if can? :read, component %> <%= link_to 'Megnéz', component %> <% end %> </td> 
-        <td><% if can? :update, component %> <%= link_to 'Szerkeszt', edit_component_path(component) %> <% end %> </td>
-        <td><% if can? :destroy, component %> <%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt alkatrészt?' } %> <% end %> </td>
+        <% if can? :read, component %> <td> <%= link_to 'Megnéz', component %> </td> <% end %>
+        <% if can? :update, component %> <td> <%= link_to 'Szerkeszt', edit_component_path(component) %></td> <% end %>
+        <% if can? :destroy, component %> <td> <%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% if can? :create, @components.first %>
+  <%= link_to 'Új alkatrész ', new_component_path %>
+<% end %>
 
-<%= link_to 'Új alkatrész felvétele', new_component_path %>
+

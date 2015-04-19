@@ -1,11 +1,13 @@
 
 <h1>Alkatrész típusok listája</h1>
 
-<table>
+<table id="datatables">
   <thead>
     <tr>
       <th>Neve</th>
-      <th colspan="3"></th>
+      <% if can? :read, @componenttypes.first %> <th>Megnéz</th> <% end %>
+      <% if can? :update, @componenttypes.first %> <th>Szekeszt</th> <% end %>
+      <% if can? :destroy, @componenttypes.first %> <th>Töröl</th> <% end %>
     </tr>
   </thead>
 
@@ -13,14 +15,16 @@
     <% @componenttypes.each do |componenttype| %>
       <tr>
         <td><%= componenttype.name %></td>
-        <td><% if can? :read, componenttype %> <%= link_to 'Megnéz', componenttype %> <% end %> </td>
-        <td><% if can? :update, componenttype %> <%= link_to 'Szerkeszt', edit_componenttype_path(componenttype) %> <% end %> </td>
-        <td><% if can? :destroy, componenttype %> <%= link_to 'Töröl', componenttype, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> <% end %> </td>
+        <% if can? :read, componenttype %> <td> <%= link_to 'Megnéz', componenttype %> </td> <% end %>
+        <% if can? :update, componenttype %> <td> <%= link_to 'Szerkeszt', edit_componenttype_path(componenttype) %></td> <% end %>
+        <% if can? :destroy, componenttype %> <td> <%= link_to 'Töröl', componenttype, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% if can? :create, @componenttypes.first %>
+  <%= link_to 'Új alkatrésztípus ', new_componenttype_path %>
+<% end %>
 
-<%= link_to 'Új alkatrésztípus felvétele', new_componenttype_path %>
