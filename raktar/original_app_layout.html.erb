@@ -1,0 +1,29 @@
+<body>
+<div id="container">
+	<header>
+		<nav>
+      <ul>
+        <% user_logged_in_msg %>
+				<% nav_items.each do |nav_item| %>
+					<%= display_nav_item(nav_item[:displaytext], nav_item[:controllername], nav_item[:linkurl]) %>
+				<% end %>
+			</ul>
+		</nav>
+	</header>
+	<section id="main">
+		<article>
+			<% if flash[:notice] %>
+				<div class="flash notice"><%= flash[:notice] %></div>
+			<% end %>
+			<%= yield %>
+		</article>
+		<aside>
+			<%= yield :aside %>
+		</aside>
+	</section>
+	<footer>
+		<p>Raktár kezelő program. Az <em>MMVILL</em> tulajdona</p>
+	</footer>
+</div>
+</body>
+

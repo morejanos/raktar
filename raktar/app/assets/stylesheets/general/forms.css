@@ -1,0 +1,27 @@
+form div {
+	margin:0 0 15px 0;
+}
+
+form input {
+	padding:5px;
+}
+
+div#errors {
+	color:#900;
+	font-weight:bold;
+}
+
+form div.field_with_errors {
+	margin-bottom:0;
+}
+
+form div.field_with_errors label {
+	color:#900;
+	font-weight:bold;
+}
+
+div.remoteform {
+	background-color:#eee;
+	padding:10px;
+	margin-bottom:20px;
+}

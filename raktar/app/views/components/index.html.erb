@@ -4,7 +4,7 @@
 <%= form_tag components_path, :method => 'get' do %>
     <p>
       <%= field_set_tag do %>
-        <%= search_field_tag :search, params[:search], placeholder: 'Írja ide a keresett szót...' %>
+        <%= search_field_tag :search, session[:search], placeholder: 'Írja ide a keresett szót...' %>
         <%= submit_tag "Keresés", name: nil %>
         <% Componenttype.all.each do |type| %>
           <%= radio_button_tag(:componenttype, type.id, (type.id == session[:componenttype].to_i)) %>
@@ -40,11 +40,11 @@
   <tbody>
     <% @components.each do |component| %>
       <tr>
-        <td><%= component.name %></td>
+        <td><%= link_to component, component %></td>
         <td><%= component.partnumber %></td>
         <td><%= component.inventory %></td>
         <td><%= component.location%></td>
-        <% unless component.componenttype.nil? %> <td><%= component.componenttype.name %> </td> <% else %> <td> "NA" </td> <% end %>
+        <% unless component.componenttype.nil? %> <td><%= link_to component.componenttype, component.componenttype %> </td> <% else %> <td> "NA" </td> <% end %>
         <td><%= component.resistance %></td>
         <td><%= component.capacity %></td>
         <td><%= component.inductivity %></td>
@@ -54,11 +54,11 @@
         <td><%= component.temperature %></td>
         <td><%= component.dimension %></td>
         <td><%= component.criticalNrOfPieces %></td>
-        <% unless component.packaging.nil? %> <td><%= component.packaging.name %> </td> <% else %> <td> "NA" </td> <% end %>
-        <% unless component.manufacturer.nil? %> <td><%= component.manufacturer.name %> </td> <% else %> <td> "NA" </td> <% end %>
+        <% unless component.packaging.nil? %> <td><%= link_to component.packaging, component.packaging %> </td> <% else %> <td> "NA" </td> <% end %>
+        <% unless component.manufacturer.nil? %> <td><%= link_to component.manufacturer, component.manufacturer %> </td> <% else %> <td> "NA" </td> <% end %>
         <td><% if can? :read, component %> <%= link_to 'Megnéz', component %> <% end %> </td> 
         <td><% if can? :update, component %> <%= link_to 'Szerkeszt', edit_component_path(component) %> <% end %> </td>
-        <td><% if can? :destroy, component %> <%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt gyártót?' } %> <% end %> </td>
+        <td><% if can? :destroy, component %> <%= link_to 'Töröl', component, method: :delete, data: { confirm: 'Biztos, hogy törölné szeretné a kijelölt alkatrészt?' } %> <% end %> </td>
       </tr>
     <% end %>
   </tbody>

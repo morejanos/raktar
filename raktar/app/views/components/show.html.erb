@@ -89,5 +89,5 @@
   <%= @component.user %>
 </p>
 
-<%= link_to 'Szerkeszt', edit_component_path(@component) %> |
-<%= link_to 'Vissza', components_path %>
+<% if can? :update, @component %> <%= link_to 'Szerkeszt', edit_component_path(@component) %> <% end %>
+<%= link_to 'Vissza', :back %>

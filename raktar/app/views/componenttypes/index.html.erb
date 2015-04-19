@@ -13,9 +13,9 @@
     <% @componenttypes.each do |componenttype| %>
       <tr>
         <td><%= componenttype.name %></td>
-        <td><%= link_to 'Megnéz', componenttype %></td>
-        <td><%= link_to 'Szerkeszt', edit_componenttype_path(componenttype) %></td>
-        <td><%= link_to 'Töröl', componenttype, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %></td>
+        <td><% if can? :read, componenttype %> <%= link_to 'Megnéz', componenttype %> <% end %> </td>
+        <td><% if can? :update, componenttype %> <%= link_to 'Szerkeszt', edit_componenttype_path(componenttype) %> <% end %> </td>
+        <td><% if can? :destroy, componenttype %> <%= link_to 'Töröl', componenttype, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> <% end %> </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,13 @@
+div.flash {
+	padding:10px;
+	font-style:italic;
+	color:#fff;
+}
+
+div.notice {
+	background-color:#3B8686;
+}
+
+div.alert {
+	background-color:#990000;
+}
