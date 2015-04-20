@@ -1,15 +1,16 @@
-<h1>Tokozások listája</h1>
+<div class="text-center">
+    <h2><strong>Tokozások listája</strong></h2>
+</div>
 
-<table id="datatables">
+<table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
-      <th>Name</th>
-      <% if can? :read, @packagings.first %> <th>Megnéz</th> <% end %>
-      <% if can? :update, @packagings.first %> <th>Szekeszt</th> <% end %>
-      <% if can? :destroy, @packagings.first %> <th>Töröl</th> <% end %>
+      <th>Tokozás Neve</th>
+      <% if can? :read, @packagings.first %> <th></th> <% end %>
+      <% if can? :update, @packagings.first %> <th></th> <% end %>
+      <% if can? :destroy, @packagings.first %> <th></th> <% end %>
     </tr>
   </thead>
-
   <tbody>
     <% @packagings.each do |packaging| %>
       <tr>
@@ -23,6 +24,6 @@
 </table>
 
 <br>
-<% if can? :create, @packagings.first %>
+<% if can? :create, Packaging.first %>
   <%= link_to 'Új tokozás', new_packaging_path %>
 <% end %>

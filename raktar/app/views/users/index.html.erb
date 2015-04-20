@@ -1,15 +1,16 @@
+<div class="text-center ">
+    <h2><strong>Felhasználók</strong></h2>
+</div>
 
-<h1>Felhasználók</h1>
-
-<table id="datatables" >
+<table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
       <th>Név</th>
       <th>Jogok</th>
       <th>Email</th>
-      <% if can? :read, @users.first %> <th>Megnéz</th> <% end %>
-      <% if can? :update, @users.first %> <th>Szekeszt</th> <% end %>
-      <% if can? :destroy, @users.first %> <th>Töröl</th> <% end %>
+      <% if can? :read, @users.first %> <th></th> <% end %>
+      <% if can? :update, @users.first %> <th></th> <% end %>
+      <% if can? :destroy, @users.first %> <th></th> <% end %>
     </tr>
   </thead>
   <tbody>

@@ -1,5 +1,6 @@
-
-<h1>Alkatrész típusok listája</h1>
+<div class="text-center">
+    <h2><strong>Alkatrész típusok listája</strong></h2>
+</div>
 
 <table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
@@ -24,7 +25,7 @@
 </table>
 
 <br>
-<% if can? :create, @componenttypes.first %>
+<% if can? :create, Componenttype.first %>
   <%= link_to 'Új alkatrésztípus ', new_componenttype_path %>
 <% end %>
 

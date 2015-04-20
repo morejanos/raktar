@@ -6,8 +6,8 @@
 #
 
 kondi:
-    name: condensator
+    name: Kondenzátor
 ell:
-    name: resistor
+    name: Ellenállás
 tekercs:
-    name: coil
+    name: Tekercs

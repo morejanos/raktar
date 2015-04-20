@@ -1,16 +1,16 @@
+<div class="text-center">
+   <h2><strong>Gyártók Listája</strong></h2>
+</div>
 
-<h1>Gyártók Listája</h1>
-
-<table id="datatables">
+<table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
       <th>Név</th>
-      <% if can? :read, @manufacturers.first %> <th>Megnéz</th> <% end %>
-      <% if can? :update, @manufacturers.first %> <th>Szekeszt</th> <% end %>
-      <% if can? :destroy, @manufacturers.first %> <th>Töröl</th> <% end %>
+      <% if can? :read, @manufacturers.first %> <th></th> <% end %>
+      <% if can? :update, @manufacturers.first %> <th></th> <% end %>
+      <% if can? :destroy, @manufacturers.first %> <th></th> <% end %>
     </tr>
   </thead>
-
   <tbody>
     <% @manufacturers.each do |manufacturer| %>
       <tr>
@@ -25,6 +25,6 @@
 
 <br>
 
-<% if can? :create, @manufacturers.first %>
+<% if can? :create, Manufacturer.first %>
   <%= link_to 'Új gyártó ', new_manufacturer_path %>
 <% end %>

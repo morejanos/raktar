@@ -1,5 +1,6 @@
-
-<h1>Készlet</h1>
+<div class="text-center">
+    <h2><strong>Raktár Készlet</strong></h2>
+</div>
 
 <%= form_tag components_path, :method => 'get' do %>
     <p>
@@ -62,7 +63,7 @@
 </table>
 
 <br>
-<% if can? :create, Component.all.first %>
+<% if can? :create, Component.first %>
   <%= link_to 'Új alkatrész ', new_component_path %>
 <% end %>
 
