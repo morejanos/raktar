@@ -8,9 +8,15 @@
 gabi:
     name: "Gabor"
     email: gabor@gabor.hu
-    permission: admin
+    permission: administrator
     encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 peti:
     name: "Peter"
     email: peter@peter.hu
     permission: worker
+    encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+jani:
+    name: "Jani"
+    email: jani@jani.hu
+    permission: poweruser
+    encrypted_password: <%= User.new.send(:password_digest, 'password') %>
