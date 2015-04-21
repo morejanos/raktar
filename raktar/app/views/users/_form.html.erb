@@ -2,11 +2,10 @@
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2> Az felhasználó mentése közben a következő hibák léptek fel:</h2>
-
       <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -16,20 +15,26 @@
     <%= f.text_field :name %><br>
     <%= f.label "Joga:" %>
     <%= f.text_field :permission %><br>
-
-    <td><% if can? :update, @user %> 
-    <%= f.collection_select(:permission_id, Permission.all, :id, :name, :include_blank => "Válassz") %>
-     
-  <% end %></td><br>
+        <% if can? :update, @user %> 
+            <%= f.collection_select(:permission_id, Permission.all, :id, :name, :include_blank => "Válassz") %>
+        <% end %>
+    <br>
     <%= f.label "Email:" %>
     <%= f.text_field :email %><br>
 
     <div class="field">
-      <%= f.label :password %><br>
-      <%= f.password_field :password, placeholder: "Hagyja üresen, hogy ne változzon" %>
+        <%= f.label "Jelszó" %> <br>
+      <%= f.password_field :password, placeholder: "Ne változzon" %>
     </div>
+    
+    <br>
+        <div class="field">
+        <%= f.label "Jelszó megerősítése" %> <br>
+        <%= f.password_field :password_confirmation, placeholder: "Ne változzon" %>
+        </div>
 
   </div>
+  <br>
   <div class="actions">
     <%= f.submit "Mentés" %>
   </div>
