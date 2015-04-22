@@ -3,7 +3,7 @@ module ApplicationHelper
   def user_logged_in_msg
     str = ''
     if user_signed_in?
-        str += '<li>' + "#{link_to(" Kijelentkezés(#{current_user})", destroy_user_session_path, {:method => :delete, :class => 'glyphicon glyphicon-log-out'} )}}" + '</li>'
+        str += '<li>' + "#{link_to(" Kijelentkezés-#{current_user}", destroy_user_session_path, {:method => :delete, :class => 'glyphicon glyphicon-log-out'} )}}" + '</li>'
     else
         str += '<li>' + "#{link_to(' Regisztrálás', new_user_registration_path, {class: 'glyphicon glyphicon-user'})}" + '</li>'
         str += '<li>' + "#{link_to(' Bejelentkezés', new_user_session_path, {class: 'glyphicon glyphicon-log-in'})}" + '</li>'

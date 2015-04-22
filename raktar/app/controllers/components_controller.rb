@@ -3,6 +3,10 @@ class ComponentsController < ApplicationController
   helper_method :sort_column, :sort_direction
   load_and_authorize_resource
 
+  def kivet
+      puts "WE ARE IN"
+  end
+
   # GET /components
   # GET /components.json
   def index

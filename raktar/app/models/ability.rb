@@ -13,7 +13,8 @@ class Ability
       can :create, Component
       can :update, Component
       can :destroy, Component
-
+      can :kivet, Component
+    
       can :read, Componenttype
       can :create, Componenttype
       can :update, Componenttype
@@ -32,12 +33,15 @@ class Ability
     elsif user.worker?
       can :read, Component
       can :update, Component
+      can :kivet, Component
 
       can :read, Componenttype
       can :update, Componenttype
+      can :create, Componenttype
 
       can :read, Packaging
       can :update, Packaging
+      can :create, Packaging
 
       can :read, Manufacturer
       can :update, Manufacturer

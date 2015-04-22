@@ -22,6 +22,7 @@
       <th>Szám</th>
       <th>Készlet</th>
       <th>Lokáció</th>
+      <% if can? :kivet, @components.first %> <th></th> <% end %>
       <th>Típus</th>
       <th>Ell.</th>
       <th>Kap.</th>
@@ -44,6 +45,7 @@
         <td><%= component.partnumber %></td>
         <td><%= component.inventory %></td>
         <td><%= component.location%></td>
+        <% if can? :kivet, component %> <td> <%= link_to 'Kivét', kivet_component_path(component) %></td> <% end %>
         <% unless component.componenttype.nil? %> <td><%= link_to component.componenttype, component.componenttype %> </td> <% else %> <td> "NA" </td> <% end %>
         <td><%= component.resistance %></td>
         <td><%= component.capacity %></td>
