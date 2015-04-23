@@ -25,5 +25,5 @@
 
 <br>
 <% if can? :create, Packaging.first %>
-  <%= link_to 'Új tokozás', new_packaging_path %>
+  <%= button_to 'Új tokozás', new_packaging_path, {class: "btn btn-warning", method: :get } %> 
 <% end %>

@@ -5,9 +5,9 @@
   <thead>
     <tr>
       <th>Jogosultság</th>
-      <% if can? :read, @parmissions.first %> <th>Megnéz</th> <% end %>
-      <% if can? :update, @parmissions.first %> <th>Szekeszt</th> <% end %>
-      <% if can? :destroy, @parmissions.first %> <th>Töröl</th> <% end %>
+      <% if can? :read, @permissions.first %> <th>Megnéz</th> <% end %>
+      <% if can? :update, @permissions.first %> <th>Szekeszt</th> <% end %>
+      <% if can? :destroy, @permissions.first %> <th>Töröl</th> <% end %>
     </tr>
   </thead>
 
@@ -25,6 +25,6 @@
 
 <br>
 <% if can? :create, @permissions.first %>
-  <%= link_to 'Új jogosultság', new_permission_path %>
+  <%= button_to 'Új jogosultság', new_permission_path, {class: "btn btn-warning", method: :get } %> 
 <% end %>
 

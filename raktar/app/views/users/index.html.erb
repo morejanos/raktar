@@ -28,3 +28,8 @@
 </table>
 
 <br>
+<% if can? :create, User.first %>
+  <%= button_to 'Új felhasználó', new_user_registration_path, {class: "btn btn-warning", method: :get } %> 
+<% end %>
+
+<br>

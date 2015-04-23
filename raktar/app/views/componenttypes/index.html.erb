@@ -26,6 +26,6 @@
 
 <br>
 <% if can? :create, Componenttype.first %>
-  <%= link_to 'Új alkatrésztípus ', new_componenttype_path %>
+  <%= button_to 'Új alkatrésztípus', new_componenttype_path,{class: "btn btn-warning", method: :get }   %> 
 <% end %>
 

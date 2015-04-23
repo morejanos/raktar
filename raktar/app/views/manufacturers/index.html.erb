@@ -26,5 +26,5 @@
 <br>
 
 <% if can? :create, Manufacturer.first %>
-  <%= link_to 'Új gyártó ', new_manufacturer_path %>
+  <%= button_to 'Új gyártó', new_manufacturer_path, {class: "btn btn-warning", method: :get } %> 
 <% end %>

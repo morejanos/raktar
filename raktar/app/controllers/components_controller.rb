@@ -4,7 +4,25 @@ class ComponentsController < ApplicationController
   load_and_authorize_resource
 
   def kivet
-      puts "WE ARE IN"
+      if !params[:kivet].nil? && params[:kivet] != 0 then
+
+        if @component.inventory < params[:kivet].to_i then
+          redirect_to :back, notice: 'Nem lehet kivenni több alkatrészt, mint amennyi a raktárban van'
+          return
+        end
+
+        @component.inventory -= params[:kivet].to_i
+
+        respond_to do |format|
+          if @component.save
+            format.html { redirect_to @component, notice: 'Alkatrész sikeresen frissült.' }
+            format.json { render :show, status: :created, location: @component }
+          else
+            format.html { redirect_to @component, notice: 'Hiba lépett fel a mentés közben.' }
+            format.json { render json: @component.errors, status: :unprocessable_entity }
+          end
+        end
+      end
   end
 
   # GET /components
