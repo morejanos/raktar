@@ -4,5 +4,9 @@
   <%= @componenttype.name %>
 </p>
 
-<%= link_to 'Szerkesztés', edit_componenttype_path(@componenttype) %> |
-<%= link_to 'Vissza', :back %>
+<% if can? :update, @componenttype %> 
+  <%= button_to 'Szerkeszt', edit_componenttype_path(@componenttype), {class: "btn btn-danger", align: "center" , method: :get} %> 
+<% end %>
+<br>
+<%= button_to 'Vissza', componenttypes_path, {class: 'btn btn-info', method: :get} %>
+

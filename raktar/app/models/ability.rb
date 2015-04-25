@@ -32,7 +32,6 @@ class Ability
 
     elsif user.worker?
       can :read, Component
-      can :update, Component
       can :kivet, Component
 
       can :read, Componenttype

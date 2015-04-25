@@ -15,10 +15,10 @@ class ComponentsController < ApplicationController
 
         respond_to do |format|
           if @component.save
-            format.html { redirect_to @component, notice: 'Alkatrész sikeresen frissült.' }
+            format.html { redirect_to components_path, notice: "Alkatrész sikeresen kivételezésre került: #{@component.name}: #{params[:kivet]} db" }
             format.json { render :show, status: :created, location: @component }
           else
-            format.html { redirect_to @component, notice: 'Hiba lépett fel a mentés közben.' }
+            format.html { redirect_to @component, alert: 'Hiba lépett fel a mentés közben.' }
             format.json { render json: @component.errors, status: :unprocessable_entity }
           end
         end

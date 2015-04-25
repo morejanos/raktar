@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Neve</th>
-      <% if can? :read, @componenttypes.first %> <th></th> <% end %>
       <% if can? :update, @componenttypes.first %> <th></th> <% end %>
       <% if can? :destroy, @componenttypes.first %> <th></th> <% end %>
     </tr>
@@ -15,10 +14,9 @@
   <tbody>
     <% @componenttypes.each do |componenttype| %>
       <tr>
-        <td><%= componenttype.name %></td>
-        <% if can? :read, componenttype %> <td> <%= link_to 'Megnéz', componenttype %> </td> <% end %>
-        <% if can? :update, componenttype %> <td> <%= link_to 'Szerkeszt', edit_componenttype_path(componenttype) %></td> <% end %>
-        <% if can? :destroy, componenttype %> <td> <%= link_to 'Töröl', componenttype, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
+        <td><%= link_to componenttype, componenttype %></td>
+        <% if can? :update, componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_componenttype_path(componenttype) %></td> <% end %>
+        <% if can? :destroy, componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, componenttype, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>

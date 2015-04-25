@@ -15,7 +15,8 @@
     <%= f.label "Alkatrész típusa" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit "Mentés" %>
+  <br>
+  <div class="actions", align ="center" >
+    <%= f.submit "Mentés", {class: "btn btn-danger", method: :get} %>
   </div>
 <% end %>

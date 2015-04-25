@@ -1,6 +1,7 @@
-<h1>Alkatrész tipus szerkesztése</h1>
+<div class="text-center">
+    <h2><strong>Alkatrész tipus szerkesztés</strong></h2>
+</div>
 
 <%= render 'form' %>
+<%= button_to 'Vissza', componenttypes_path, {class: "btn btn-info", method: :get} %>
 
-<%= link_to 'Megnéz', @componenttype %> |
-<%= link_to 'Vissza', componenttypes_path %>
