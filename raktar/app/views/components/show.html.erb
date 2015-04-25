@@ -89,5 +89,8 @@
   <%= @component.user %>
 </p>
 
-<% if can? :update, @component %> <%= link_to 'Szerkeszt', edit_component_path(@component) %> <% end %>
-<%= link_to 'Vissza', components_path %>
+<% if can? :update, @component %> 
+  <%= button_to 'Szerkeszt', edit_component_path(@component), {class: "btn btn-danger", align: "center" , method: :get} %> 
+<% end %>
+<br>
+<%= button_to 'Vissza', components_path, {class: 'btn btn-info', method: :get} %>

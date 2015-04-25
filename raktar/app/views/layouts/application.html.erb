@@ -49,11 +49,22 @@
   </div><!-- /.navbar -->
 
   <div class="container">
-    <% [:notice, :alert].each do |level| %>
-      <% if flash[level] %>
-        <div class="flash <%= level %>"><%= flash[level] %></div>
+      <% if flash[:notice] %>
+        <div class="alert alert-success" role="alert">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <%= flash[:notice] %>
+        </div>
       <% end %>
-    <% end %>
+
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
 
     <%= yield %>
 
