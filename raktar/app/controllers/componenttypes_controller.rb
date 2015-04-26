@@ -27,7 +27,7 @@ class ComponenttypesController < ApplicationController
 
     respond_to do |format|
       if @componenttype.save
-        format.html { redirect_to @componenttype, notice: 'Alkatrész típusa sikeresen elkészült.' }
+        format.html { redirect_to componenttypes_path, notice: "Alkatrész típusa sikeresen létrejött:  #{@componenttype.name}" }
         format.json { render :show, status: :created, location: @componenttype }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class ComponenttypesController < ApplicationController
   def update
     respond_to do |format|
       if @componenttype.update(componenttype_params)
-        format.html { redirect_to @componenttype, notice: 'Alkatrész típusa sikeresen frissült.' }
+        format.html { redirect_to componenttypes_path, notice: "Alkatrész típusa sikeresen frissült: #{@componenttype.name}" }
         format.json { render :show, status: :ok, location: @componenttype }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class ComponenttypesController < ApplicationController
   def destroy
     @componenttype.destroy
     respond_to do |format|
-      format.html { redirect_to componenttypes_url, notice: 'Alkatrész típusa sikeresen törölve lett.' }
+      format.html { redirect_to componenttypes_url, notice: "Alkatrész típusa sikeresen törölve lett: #{@componenttype.name}" }
       format.json { head :no_content }
     end
   end

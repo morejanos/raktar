@@ -1,5 +1,8 @@
-<h1>Új alkatrésztípus felvétele</h1>
+<div class="text-center">
+    <h2><strong>Új alkatrésztípus felvétele</strong></h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Vissza', componenttypes_path %>
+<%= button_to 'Vissza', componenttypes_path, {class: "btn btn-info", method: :get} %>
+

@@ -1,3 +1,6 @@
+<div class="text-center">
+    <h2><strong>Alkatrésztípus megtekintése</strong></h2>
+</div>
 
 <p>
   <strong>Név:</strong>
@@ -5,8 +8,8 @@
 </p>
 
 <% if can? :update, @componenttype %> 
-  <%= button_to 'Szerkeszt', edit_componenttype_path(@componenttype), {class: "btn btn-danger", align: "center" , method: :get} %> 
+   <%= button_to 'Szerkeszt', edit_componenttype_path(@componenttype), {class: "btn btn-danger" , method: :get} %> 
 <% end %>
-<br>
-<%= button_to 'Vissza', componenttypes_path, {class: 'btn btn-info', method: :get} %>
+
+<%= button_to 'Vissza', componenttypes_path, {class: "btn btn-info", method: :get} %>
 

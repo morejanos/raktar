@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to componenttype, componenttype %></td>
         <% if can? :update, componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_componenttype_path(componenttype) %></td> <% end %>
-        <% if can? :destroy, componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, componenttype, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
+        <% if can? :destroy, componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, componenttype, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{componenttype})" } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
