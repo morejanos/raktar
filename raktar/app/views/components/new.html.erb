@@ -1,7 +1,7 @@
 <div class="text-center">
-    <h2><strong>Új alktrész felvétel</strong></h2>
+    <h2><strong>Új alkatrész felvétele</strong></h2>
 </div>
 
 <%= render 'form' %>
 
-<%= link_to 'Vissza', components_path %>
+<%= button_to 'Vissza', components_path, {class: "btn btn-info", method: :get} %>

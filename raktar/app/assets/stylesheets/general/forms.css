@@ -11,8 +11,13 @@ div#errors {
 	font-weight:bold;
 }
 
-form div.field_with_errors {
+
+form div.field_with_errors input {
 	margin-bottom:0;
+	font-weight:bold;
+  border: 2px solid #900;
+  border-radius:2px;
+
 }
 
 form div.field_with_errors label {
@@ -25,3 +30,8 @@ div.remoteform {
 	padding:10px;
 	margin-bottom:20px;
 }
+
+#error_explanation {
+	color:#990000;
+}
+
