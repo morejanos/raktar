@@ -54,7 +54,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to @component, notice: 'Alkatrész sikeresen elkészült.' }
+        format.html { redirect_to components_path, notice: "Alkatrész sikeresen elkészült: #{@component.name}" }
         format.json { render :show, status: :created, location: @component }
       else
         format.html { render :new }
@@ -70,7 +70,7 @@ class ComponentsController < ApplicationController
     respond_to do |format|
       if @component.update(component_params)
         Usermailer.criticalNrOfPieces_email(@component).deliver if @component.inventory <= @component.criticalNrOfPieces 
-        format.html { redirect_to @component, notice: 'Alkatrész sikeresen frissült.' }
+        format.html { redirect_to components_path, notice: "Alkatrész sikeresen frissült: #{@component.name}" }
         format.json { render :show, status: :ok, location: @component }
       else
         format.html { render :edit }

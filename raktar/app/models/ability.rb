@@ -34,15 +34,10 @@ class Ability
       can :read, Component
       can :kivet, Component
 
-      can :read, Componenttype
       can :update, Componenttype
-      can :create, Componenttype
 
-      can :read, Packaging
       can :update, Packaging
-      can :create, Packaging
 
-      can :read, Manufacturer
       can :update, Manufacturer
     end
  

@@ -14,11 +14,11 @@
   <div class="field">
     <%= f.label "Név" %>
     <%= f.text_field :name %><br>
-    <%= f.label "Alkatrész száma" %>
+    <%= f.label "Alkatrész azonosító" %>
     <%= f.text_field :partnumber %><br>
-    <%= f.label "Készenléti darabszám" %>
+    <%= f.label "Készlet" %>
     <%= f.number_field :inventory %><br>
-    <%= f.label "Raktári lokáció" %>
+    <%= f.label "Lokáció" %>
     <%= f.text_field :location %><br>
     <%= f.label "Alkatrész típusa" %>
     <%= f.collection_select(:componenttype_id, Componenttype.all, :id, :name, :include_blank => "Válassz") %><br>
@@ -38,7 +38,7 @@
     <%= f.text_field :temperature %><br>
     <%= f.label "Méretei" %>
     <%= f.text_field :dimension %><br>
-    <%= f.label "Rendeléshez kritikus darabszám" %>
+    <%= f.label "Rendeléshez szükséges darabszám" %>
     <%= f.number_field :criticalNrOfPieces %><br>
     <%= f.label "Tokozás" %>
     <%= f.collection_select(:packaging_id, Packaging.all, :id, :name, :include_blank => "Válassz") %><br>
