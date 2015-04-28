@@ -110,11 +110,19 @@ class ComponentsController < ApplicationController
     
     def update_componenttype_session(componenttype)
       if session[:componenttype].nil? && !componenttype.nil? then
-        session[:componenttype] = componenttype
+        if componenttype != "all" then
+          session[:componenttype] = componenttype
+        else
+          session[:componenttype] = ""
+        end
       elsif session[:componenttype].nil? || componenttype.nil? then
-        session[:componenttype] ||= ""
+          session[:componenttype] ||= ""
       elsif session[:componenttype] != componenttype then
-        session[:componenttype] = componenttype
+        if componenttype != "all" then
+          session[:componenttype] = componenttype
+        else
+          session[:componenttype] = ""
+        end
       end
     end
 

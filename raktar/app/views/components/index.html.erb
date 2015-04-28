@@ -2,17 +2,19 @@
     <h2><strong>Raktár Készlet</strong></h2>
 </div>
 
-<%= form_tag components_path, :method => 'get' do %>
+<%= form_tag components_path, { class: "form-group", :method => 'get'} do %>
     <p>
       <%= field_set_tag do %>
         <%= search_field_tag :search, session[:search], placeholder: 'Írja ide a keresett szót...' %>
         <%= submit_tag "Keresés", name: nil %>
+          <%= radio_button_tag(:componenttype, "all") %>
+          <%= label_tag(:componenttype, "Összes | ") %>
         <% Componenttype.all.each do |type| %>
           <%= radio_button_tag(:componenttype, type.id, (type.id == session[:componenttype].to_i)) %>
           <%= label_tag(:componenttype, type.name) %>
         <% end %>
       <% end %>
-    </p>
+  </p>
 <% end %>
 
 <table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
