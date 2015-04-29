@@ -69,6 +69,6 @@
 <br>
 <% if can? :create, Component.first %>
   <%= button_to 'Új alkatrész ', new_component_path, {class: "btn btn-warning", method: :get } %> 
+  <br>
+   <%= link_to "Letöltés Excel formátumban", components_path(format: "xls") %>
 <% end %>
-
-

@@ -32,8 +32,14 @@ class ComponentsController < ApplicationController
     update_componenttype_session(params[:componenttype])
     
     @components = Component.search(session[:search], session[:componenttype]).order(sort_column + " " + sort_direction)
+ 
+    respond_to do |format|
+        format.html
+        format.csv { send_data @components.to_csv }
+        format.xls
+    end
   end
-
+  
   # GET /components/1
   # GET /components/1.json
   def show

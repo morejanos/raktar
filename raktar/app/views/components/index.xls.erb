@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+          <Cell><Data ss:Type="String">Név</Data></Cell>
+          <Cell><Data ss:Type="String">Szám</Data></Cell>
+          <Cell><Data ss:Type="String">Készlet</Data></Cell>
+          <Cell><Data ss:Type="String">Lokáció</Data></Cell>
+          <Cell><Data ss:Type="String">Típus</Data></Cell>
+          <Cell><Data ss:Type="String">Ell.</Data></Cell>
+          <Cell><Data ss:Type="String">Kap.</Data></Cell>
+          <Cell><Data ss:Type="String">Ind.</Data></Cell>
+          <Cell><Data ss:Type="String">Fesz.</Data></Cell>
+          <Cell><Data ss:Type="String">Áram</Data></Cell>
+          <Cell><Data ss:Type="String">Telj.</Data></Cell>
+          <Cell><Data ss:Type="String">Hőm.</Data></Cell>
+          <Cell><Data ss:Type="String">Méret</Data></Cell>
+          <Cell><Data ss:Type="String">Tok</Data></Cell>
+          <Cell><Data ss:Type="String">Gyártó</Data></Cell>
+      </Row>
+    <% @components.each do |component| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= link_to component, component %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.partnumber %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= component.inventory %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.location%></Data></Cell>
+        <% unless component.componenttype.nil? %> <Cell><Data ss:Type="String"><%= link_to component.componenttype, component.componenttype %> </Data></Cell> <% else %> <Cell><Data ss:Type="String"> "NA" </Data></Cell> <% end %>
+        <Cell><Data ss:Type="String"><%= component.resistance %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.capacity %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.inductivity %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.voltage %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.current %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.power %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.temperature %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= component.dimension %></Data></Cell>
+        <% unless component.packaging.nil? %> <Cell><Data ss:Type="String"><%= link_to component.packaging, component.packaging %> </Data></Cell> <% else %> <Cell><Data ss:Type="String">NA</Data></Cell> <% end %>
+        <% unless component.manufacturer.nil? %> <Cell><Data ss:Type="String"><%= link_to component.manufacturer, component.manufacturer %> </Data></Cell> <% else %> <Cell><Data ss:Type="String">NA</Data></Cell> <% end %>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+
