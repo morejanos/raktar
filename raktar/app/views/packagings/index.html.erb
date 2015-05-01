@@ -2,11 +2,10 @@
     <h2><strong>Tokozások listája</strong></h2>
 </div>
 
-<table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table id="datatables" class="table table-striped table-bordered" >
   <thead>
     <tr>
       <th>Tokozás Neve</th>
-      <% if can? :read, @packagings.first %> <th></th> <% end %>
       <% if can? :update, @packagings.first %> <th></th> <% end %>
       <% if can? :destroy, @packagings.first %> <th></th> <% end %>
     </tr>
@@ -14,10 +13,9 @@
   <tbody>
     <% @packagings.each do |packaging| %>
       <tr>
-        <td><%= packaging.name %></td>
-        <% if can? :read, packaging %> <td> <%= link_to 'Megnéz', packaging %> </td> <% end %>
-        <% if can? :update, packaging %> <td> <%= link_to 'Szerkeszt', edit_packaging_path(packaging) %></td> <% end %>
-        <% if can? :destroy, packaging %> <td> <%= link_to 'Töröl', packaging, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
+        <td><%= link_to packaging, packaging %></td>
+        <% if can? :update, packaging %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_packaging_path(packaging) %></td> <% end %>
+        <% if can? :destroy, packaging %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, packaging, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{packaging})" } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>

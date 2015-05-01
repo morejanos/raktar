@@ -2,13 +2,12 @@
     <h2><strong>Felhasználók</strong></h2>
 </div>
 
-<table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table id="datatables" class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>Név</th>
       <th>Jogok</th>
       <th>Email</th>
-      <% if can? :read, @users.first %> <th></th> <% end %>
       <% if can? :update, @users.first %> <th></th> <% end %>
       <% if can? :destroy, @users.first %> <th></th> <% end %>
     </tr>
@@ -16,12 +15,11 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
+        <td><%= link_to user, user %></td>
         <td><%= user.permission %></td>
         <td><%= user.email %></td>
-        <% if can? :read, user %> <td> <%= link_to 'Megnéz', user %> </td> <% end %>
-        <% if can? :update, user %> <td> <%= link_to 'Szerkeszt', edit_user_path(user) %></td> <% end %>
-        <% if can? :destroy, user %> <td> <%= link_to 'Töröl', user, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
+        <% if can? :update, user %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_user_path(user) %></td> <% end %>
+        <% if can? :destroy, user %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, user, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
