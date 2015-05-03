@@ -13,6 +13,12 @@ class ManufacturersControllerTest < ActionController::TestCase
       assert_not man.save
    end
 
+  test "should not get index with worker user" do
+    sign_in users(:peti)
+    get :index
+    assert_redirected_to root_path
+  end
+
    test "should get index" do
       sign_in users(:jani)
       get :index

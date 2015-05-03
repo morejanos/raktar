@@ -14,6 +14,12 @@ class PackagingsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:packagings)
   end
 
+  test "should not get index with worker user" do
+    sign_in users(:peti)
+    get :index
+    assert_redirected_to root_path
+  end
+
   test "should get new" do
     sign_in users(:jani)
     get :new

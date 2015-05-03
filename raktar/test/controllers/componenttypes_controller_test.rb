@@ -7,11 +7,17 @@ class ComponenttypesControllerTest < ActionController::TestCase
     @componenttype = componenttypes(:kondi)
   end
 
-  test "should get index" do
+  test "should get index with poweruser" do
     sign_in users(:jani)
     get :index
     assert_response :success
     assert_not_nil assigns(:componenttypes)
+  end
+
+  test "should not get index with worker user" do
+    sign_in users(:peti)
+    get :index
+    assert_redirected_to root_path
   end
 
   test "should get new" do
