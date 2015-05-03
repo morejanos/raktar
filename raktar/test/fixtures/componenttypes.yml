@@ -6,8 +6,14 @@
 #
 
 kondi:
-    name: Kondenzátor
+    name: "Kondenzátor"
+
 ell:
-    name: Ellenállás
+    name: "Ellenállás"
+
 tekercs:
-    name: Tekercs
+    name: "Tekercs"
+
+tranzisztor:
+    name: "Tranzisztor"
+

@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 
-one:
+ell1:
         name: R15
         partnumber: 123
         power: 4 W
@@ -23,4 +23,113 @@ one:
         manufacturer: pipi
         user: peti
         componenttype: ell
+ell2:
+        name: R20
+        partnumber: 1245
+        power: 40 W
+        voltage: 100V
+        inductivity: 12mH
+        current: 1A
+        resistance: 13 Ohm
+        dimension: 12mmx12mmx32mm 
+        temperature: 50 fok
+        capacity: 
+        comment: "NE hogy ezt használd"
+        inventory: 5
+        criticalNrOfPieces: 10
+        packaging: dip
+        manufacturer: pipi
+        user: peti
+        componenttype: ell
+kondi1:
+        name: C15
+        partnumber: 123
+        power: 4 W
+        voltage: 10V
+        inductivity: 12mH
+        current: 1A
+        resistance: 13 Ohm
+        dimension: 
+        temperature:
+        capacity:
+        comment:
+        inventory: 5
+        criticalNrOfPieces: 10
+        packaging: dip
+        manufacturer: pipi
+        user: peti
+        componenttype: kondi
+tekercs1:
+        name: L15
+        partnumber: 123
+        power: 4 W
+        voltage: 10V
+        inductivity: 12mH
+        current: 1A
+        resistance: 13 Ohm
+        dimension: 
+        temperature:
+        capacity:
+        comment:
+        inventory: 5
+        criticalNrOfPieces: 10
+        packaging: dip
+        manufacturer: pipi
+        user: peti
+        componenttype: tekercs
+tekercs2:
+        name: L20
+        partnumber: 123
+        power: 4 W
+        voltage: 10V
+        inductivity: 12mH
+        current: 1A
+        resistance: 13 Ohm
+        dimension: 
+        temperature:
+        capacity:
+        comment:
+        inventory: 5
+        criticalNrOfPieces: 10
+        packaging: dip
+        manufacturer: pipi
+        user: peti
+        componenttype: tekercs
+tranzisztor1:
+        name: T12
+        partnumber: 123
+        power: 4 W
+        voltage: 10V
+        inductivity: 12mH
+        current: 1A
+        resistance: 13 Ohm
+        dimension: 
+        temperature:
+        capacity:
+        comment:
+        inventory: 5
+        criticalNrOfPieces: 10
+        packaging: dip
+        manufacturer: pipi
+        user: peti
+        componenttype: tranzisztor
+tranzisztor2:
+        name: T2
+        partnumber: 123
+        power: 4 W
+        voltage: 10V
+        inductivity: 12mH
+        current: 1A
+        resistance: 13 Ohm
+        dimension: 
+        temperature:
+        capacity:
+        comment:
+        inventory: 5
+        criticalNrOfPieces: 10
+        packaging: dip
+        manufacturer: pipi
+        user: peti
+        componenttype: tranzisztor
+
 

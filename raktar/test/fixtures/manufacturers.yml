@@ -8,8 +8,18 @@
 pipi: 
     name: "pipi kft"
     address: "2800 Tb"
-    email: pipi@pipi.hu
+    contactPerson: "Kovács Pisti"
+    phone: "+36789456123"
+    email: "pipi@pipi.hu"
 elso:
     name: "elso bt"
     address: "8000 Szfvar"
+    contactPerson: "Kovács Pisti"
+    phone: "+36789456123"
     email: "elso@elso.hu"
+masodik:
+    name: "masodik bt"
+    address: "Bp"
+    contactPerson: "Nagy Pisti"
+    phone: "+36789456123"
+    email: "masodik@masodik.hu"
