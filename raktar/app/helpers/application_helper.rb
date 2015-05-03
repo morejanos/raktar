@@ -58,6 +58,10 @@ module ApplicationHelper
     "MMVILL kft."
   end
 
+  def programmer_name
+    "More Softwares"
+  end
+
   def meta_description
     "Készlet nyilvántartó"
   end
