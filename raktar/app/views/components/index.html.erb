@@ -5,7 +5,7 @@
 <%= form_tag components_path, { class: "form-group", :method => 'get'} do %>
     <p>
       <%= field_set_tag do %>
-        <%= search_field_tag :search, session[:search], placeholder: 'Írja ide a keresett szót...' %>
+        <%= search_field_tag :search, session[:search], placeholder: 'Írja ide a keresett szót...', :autofocus => true  %>
         <%= submit_tag "Keresés", name: nil %>
           <%= radio_button_tag(:componenttype, "all") %>
           <%= label_tag(:componenttype, "Összes | ") %>

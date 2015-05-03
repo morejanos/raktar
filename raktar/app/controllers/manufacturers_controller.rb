@@ -16,7 +16,7 @@ class ManufacturersController < ApplicationController
 
         respond_to do |format|
             if @manufacturer.save
-                format.html { redirect_to @manufacturer, notice: 'Gyártó sikeresen el lett mentve.' }
+                format.html { redirect_to manufacturers_path, notice: "Gyártó sikeresen frissült: #{@manufacturer.name}" }
                 format.json { render :show, status: :created, location: @manufacturer }
             else
                 format.html { render :new }
@@ -29,7 +29,7 @@ class ManufacturersController < ApplicationController
     def update
         respond_to do |format|
             if @manufacturer.update(manufacturer_params)
-                format.html { redirect_to @manufacturer, notice: 'Gyártó sikeresen frissítve lett.' }
+                format.html { redirect_to manufacturers_path, notice: "Gyártó sikeresen frissült: #{@manufacturer.name}" }
                 format.json { render :show, status: :ok, location: @manufacturer }
             else
                 format.html { render :edit }

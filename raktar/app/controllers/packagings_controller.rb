@@ -25,7 +25,7 @@ class PackagingsController < ApplicationController
 
     respond_to do |format|
       if @packaging.save
-        format.html { redirect_to @packaging, notice: 'Tokozás sikeresen el lett mentve.' }
+        format.html { redirect_to packagings_path, notice: "Tokozás sikeresen el lett mentve: #{@packaging.name}" }
         format.json { render :show, status: :created, location: @packaging }
       else
         format.html { render :new }
@@ -39,7 +39,7 @@ class PackagingsController < ApplicationController
   def update
     respond_to do |format|
       if @packaging.update(packaging_params)
-        format.html { redirect_to @packaging, notice: 'Tokozás sikeresen frissítve lett.' }
+        format.html { redirect_to packagings_path, notice: "Tokozás sikeresen frissítve lett: #{@packaging.name}" }
         format.json { render :show, status: :ok, location: @packaging }
       else
         format.html { render :edit }
