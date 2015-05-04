@@ -1,5 +1,7 @@
-<h1>Új gyártó felvétele</h1>
+<div class="text-center">
+    <h2><strong>Új gyártó felvétele</strong></h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Vissza', manufacturers_path %>
+<%= button_to 'Vissza', manufacturers_path, {class: "btn btn-info", method: :get} %>

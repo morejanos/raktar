@@ -1,6 +1,7 @@
-<h1>Tokozás szerkesztése</h1>
+<div class="text-center">
+    <h2><strong>Tokozás szerkesztése</strong></h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Megnéz', @packaging %> |
-<%= link_to 'Vissza', packagings_path %>
+<%= button_to 'Vissza', packagings_path, {class: "btn btn-info", method: :get} %>

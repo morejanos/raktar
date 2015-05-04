@@ -1,5 +1,7 @@
-<h1>Új tokozás</h1>
+<div class="text-center">
+    <h2><strong>Új tokozás</strong></h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Vissza', packagings_path %>
+<%= button_to 'Vissza', packagings_path, {class: "btn btn-info", method: :get} %>

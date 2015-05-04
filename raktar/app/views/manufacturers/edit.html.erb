@@ -1,6 +1,8 @@
-<h1>Gyártó szerkesztése</h1>
+<div class="text-center">
+    <h2><strong>Gyártó szerkesztése</strong></h2>
+</div>
 
 <%= render 'form' %>
 
 <%= link_to 'Megnéz', @manufacturer %> |
-<%= link_to 'Vissza', manufacturers_path %>
+<%= button_to 'Vissza', manufacturers_path, {class: "btn btn-info", method: :get} %>
