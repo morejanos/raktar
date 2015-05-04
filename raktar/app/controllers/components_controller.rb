@@ -4,7 +4,8 @@ class ComponentsController < ApplicationController
   load_and_authorize_resource
 
   def kivet
-      if !params[:kivet].nil? && params[:kivet] != 0 then
+    if !params[:kivet].nil? then
+      if params[:kivet].to_i > 0 then
 
         if @component.inventory < params[:kivet].to_i then
           redirect_to :back, notice: 'Nem lehet kivenni több alkatrészt, mint amennyi a raktárban van'
@@ -22,7 +23,10 @@ class ComponentsController < ApplicationController
             format.json { render json: @component.errors, status: :unprocessable_entity }
           end
         end
+      else
+            flash[:alert] = "Alkatrész sikertelen kivétele: #{@component.name}"
       end
+    end
   end
 
   # GET /components

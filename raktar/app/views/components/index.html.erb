@@ -43,7 +43,15 @@
   <tbody>
     <% @components.each do |component| %>
       <tr>
-        <% if can? :kivet, component %> <td> <%= button_to 'Kivét', kivet_component_path(component), {class: "btn btn-primary", method: :get} %></td> <% end %>
+        <% if can? :kivet, component %>
+          <td>
+            <% if !component.criticalNrOfPieces.nil? and component.inventory < component.criticalNrOfPieces %> 
+              <%= button_to 'Kivét', kivet_component_path(component), {class: "btn btn-primary", method: :get} %>
+            <% else %>
+              <%= button_to 'Kivét', kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
+            <% end %>
+          </td> 
+        <% end %>
         <td><%= link_to component, component %></td>
         <td><%= component.partnumber %></td>
         <td><%= component.inventory %></td>
