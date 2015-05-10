@@ -14,74 +14,74 @@
 ActiveRecord::Schema.define(version: 20150406153542) do
 
   create_table "components", force: :cascade do |t|
-    t.string   "name"
-    t.string   "partnumber"
-    t.integer  "inventory"
-    t.string   "inductivity"
-    t.string   "power"
-    t.string   "voltage"
-    t.string   "current"
-    t.string   "resistance"
-    t.string   "dimension"
-    t.string   "temperature"
-    t.string   "capacity"
-    t.string   "location"
-    t.string   "comment"
-    t.integer  "criticalNrOfPieces"
-    t.integer  "packaging_id"
-    t.integer  "manufacturer_id"
-    t.integer  "user_id"
-    t.integer  "componenttype_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "name",               limit: 255
+    t.string   "partnumber",         limit: 255
+    t.integer  "inventory",          limit: 4
+    t.string   "inductivity",        limit: 255
+    t.string   "power",              limit: 255
+    t.string   "voltage",            limit: 255
+    t.string   "current",            limit: 255
+    t.string   "resistance",         limit: 255
+    t.string   "dimension",          limit: 255
+    t.string   "temperature",        limit: 255
+    t.string   "capacity",           limit: 255
+    t.string   "location",           limit: 255
+    t.string   "comment",            limit: 255
+    t.integer  "criticalNrOfPieces", limit: 4
+    t.integer  "packaging_id",       limit: 4
+    t.integer  "manufacturer_id",    limit: 4
+    t.integer  "user_id",            limit: 4
+    t.integer  "componenttype_id",   limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "componenttypes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "manufacturers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "contactPerson"
-    t.string   "address"
-    t.string   "email"
-    t.string   "phone"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "name",          limit: 255
+    t.string   "contactPerson", limit: 255
+    t.string   "address",       limit: 255
+    t.string   "email",         limit: 255
+    t.string   "phone",         limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "packagings", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "permissions", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "permission_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "name",                   limit: 255
+    t.integer  "permission_id",          limit: 4
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
