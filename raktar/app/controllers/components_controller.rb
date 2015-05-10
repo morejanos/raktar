@@ -17,6 +17,7 @@ class ComponentsController < ApplicationController
         respond_to do |format|
           if @component.save
             logger.info "Kivet happend by #{current_user} on item #{@component.name} in #{params[:kivet]} pieces. New number of pieces is #{@component.inventory}."
+            Usermailer.criticalNrOfPieces_email(@component).deliver if @component.inventory <= @component.criticalNrOfPieces
             format.html { redirect_to components_path, notice: "Alkatrész sikeresen kivételezésre került: #{@component.name}: #{params[:kivet]} db" }
             format.json { render :show, status: :created, location: @component }
           else

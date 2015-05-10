@@ -6,9 +6,12 @@
     <body>
         <h1> Alkatrész rendelés szükséges </h1>
         <br>
-        Alkatrész neve: <%= @component.name %> <br>
-        Aktuális darabszám: <%= @component.inventory %> <br>
-        Figyelmeztető darabszám: <%= @component.criticalNrOfPieces %> <br>
-        Alkatrész lokációja: <%= @component.location %> <br>
+        <p>
+        Alkatrész neve:         <b><%= @component.name %></b> <br>
+        Aktuális darabszám:     <b><%= @component.inventory %></b> <br>
+        Figyelmeztető darabszám:<b><%= @component.criticalNrOfPieces %></b> <br>
+        Alkatrész lokációja:    <b><%= @component.location %></b> <br> <br>
+        </p>
+        <%= link_to "Alkatrész link", @component %>
     </body>
 </html>
