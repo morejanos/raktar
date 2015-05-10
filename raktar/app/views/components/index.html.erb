@@ -45,7 +45,7 @@
       <tr>
         <% if can? :kivet, component %>
           <td>
-            <% if !component.criticalNrOfPieces.nil? and component.inventory < component.criticalNrOfPieces %> 
+            <% if !component.criticalNrOfPieces.nil? and component.inventory > component.criticalNrOfPieces %> 
               <%= button_to 'Kivét', kivet_component_path(component), {class: "btn btn-primary", method: :get} %>
             <% else %>
               <%= button_to 'Kivét', kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
