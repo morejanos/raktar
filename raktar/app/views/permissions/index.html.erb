@@ -5,9 +5,9 @@
   <thead>
     <tr>
       <th>Jogosultság</th>
-      <% if can? :read, @permissions.first %> <th>Megnéz</th> <% end %>
-      <% if can? :update, @permissions.first %> <th>Szekeszt</th> <% end %>
-      <% if can? :destroy, @permissions.first %> <th>Töröl</th> <% end %>
+      <% if can? :read, Permission %> <th>Megnéz</th> <% end %>
+      <% if can? :update, Permission %> <th>Szekeszt</th> <% end %>
+      <% if can? :destroy, Permission %> <th>Töröl</th> <% end %>
     </tr>
   </thead>
 
@@ -15,16 +15,16 @@
     <% @permissions.each do |permission| %>
       <tr>
         <td><%= permission.name %></td>
-        <% if can? :read, permission %> <td> <%= link_to 'Megnéz', permission %> </td> <% end %>
-        <% if can? :update, permission %> <td> <%= link_to 'Szerkeszt', edit_permission_path(permission) %></td> <% end %>
-        <% if can? :destroy, permission %> <td> <%= link_to 'Töröl', permission, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
+        <% if can? :read, Permission %> <td> <%= link_to 'Megnéz', permission %> </td> <% end %>
+        <% if can? :update, Permission %> <td> <%= link_to 'Szerkeszt', edit_permission_path(permission) %></td> <% end %>
+        <% if can? :destroy, Permission %> <td> <%= link_to 'Töröl', permission, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<% if can? :create, @permissions.first %>
+<% if can? :create, Permission %>
   <%= button_to 'Új jogosultság', new_permission_path, {class: "btn btn-warning", method: :get } %> 
 <% end %>
 

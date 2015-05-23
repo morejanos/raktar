@@ -6,16 +6,16 @@
   <thead>
     <tr>
       <th>Név</th>
-      <% if can? :update, @manufacturers.first %> <th></th> <% end %>
-      <% if can? :destroy, @manufacturers.first %> <th></th> <% end %>
+      <% if can? :update, Manufacturer %> <th></th> <% end %>
+      <% if can? :destroy, Manufacturer %> <th></th> <% end %>
     </tr>
   </thead>
   <tbody>
     <% @manufacturers.each do |manufacturer| %>
       <tr>
         <td><%= link_to manufacturer, manufacturer %></td>
-        <% if can? :update, manufacturer %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_manufacturer_path(manufacturer) %></td> <% end %>
-        <% if can? :destroy, manufacturer %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, manufacturer, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{manufacturer})" } %> </td> <% end %>
+        <% if can? :update, Manufacturer %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_manufacturer_path(manufacturer) %></td> <% end %>
+        <% if can? :destroy, Manufacturer %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, manufacturer, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{manufacturer})" } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -23,6 +23,6 @@
 
 <br>
 
-<% if can? :create, Manufacturer.first %>
+<% if can? :create, Manufacturer %>
   <%= button_to 'Új gyártó', new_manufacturer_path, {class: "btn btn-warning", method: :get } %> 
 <% end %>

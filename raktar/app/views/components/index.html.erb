@@ -20,7 +20,7 @@
 <table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
-      <% if can? :kivet, @components.first %> <th></th> <% end %>
+      <% if can? :kivet, Component %> <th></th> <% end %>
       <th>Név</th>
       <th>Szám</th>
       <th>Készlet</th>
@@ -36,8 +36,8 @@
       <th>Méret</th>
       <th>Tok</th>
       <th>Gyártó</th>
-      <% if can? :update, @components.first %> <th></th> <% end %>
-      <% if can? :destroy, @components.first %> <th></th> <% end %>
+      <% if can? :update, Component %> <th></th> <% end %>
+      <% if can? :destroy, Component %> <th></th> <% end %>
     </tr>
   </thead>
   <tbody>
@@ -75,7 +75,7 @@
 </table>
 
 <br>
-<% if can? :create, Component.first %>
+<% if can? :create, Component %>
   <%= button_to 'Új alkatrész ', new_component_path, {class: "btn btn-warning", method: :get } %> 
   <br>
    <%= link_to "Letöltés Excel formátumban", components_path(format: "xls") %>

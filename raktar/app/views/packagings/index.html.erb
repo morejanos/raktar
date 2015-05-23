@@ -6,22 +6,22 @@
   <thead>
     <tr>
       <th>Tokozás Neve</th>
-      <% if can? :update, @packagings.first %> <th></th> <% end %>
-      <% if can? :destroy, @packagings.first %> <th></th> <% end %>
+      <% if can? :update, Packaging %> <th></th> <% end %>
+      <% if can? :destroy, Packaging %> <th></th> <% end %>
     </tr>
   </thead>
   <tbody>
     <% @packagings.each do |packaging| %>
       <tr>
         <td><%= link_to packaging, packaging %></td>
-        <% if can? :update, packaging %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_packaging_path(packaging) %></td> <% end %>
-        <% if can? :destroy, packaging %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, packaging, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{packaging})" } %> </td> <% end %>
+        <% if can? :update, Packaging %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_packaging_path(packaging) %></td> <% end %>
+        <% if can? :destroy, Packaging %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, packaging, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{packaging})" } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<% if can? :create, Packaging.first %>
+<% if can? :create, Packaging %>
   <%= button_to 'Új tokozás', new_packaging_path, {class: "btn btn-warning", method: :get } %> 
 <% end %>

@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>Neve</th>
-      <% if can? :update, @componenttypes.first %> <th></th> <% end %>
-      <% if can? :destroy, @componenttypes.first %> <th></th> <% end %>
+      <% if can? :update, Componenttype %> <th></th> <% end %>
+      <% if can? :destroy, Componenttype %> <th></th> <% end %>
     </tr>
   </thead>
 
@@ -15,15 +15,15 @@
     <% @componenttypes.each do |componenttype| %>
       <tr>
         <td><%= link_to componenttype, componenttype %></td>
-        <% if can? :update, componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_componenttype_path(componenttype) %></td> <% end %>
-        <% if can? :destroy, componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, componenttype, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{componenttype})" } %> </td> <% end %>
+        <% if can? :update, Componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_componenttype_path(componenttype) %></td> <% end %>
+        <% if can? :destroy, Componenttype %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, componenttype, method: :delete, data: { confirm: "Biztos, hogy töröli? (#{componenttype})" } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<% if can? :create, Componenttype.first %>
+<% if can? :create, Componenttype %>
   <%= button_to 'Új alkatrésztípus', new_componenttype_path,{class: "btn btn-warning", method: :get }   %> 
 <% end %>
 
