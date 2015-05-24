@@ -43,12 +43,12 @@
   <tbody>
     <% @components.each do |component| %>
       <tr>
-        <% if can? :kivet, component %>
+        <% if can? :kivet, Component %>
           <td>
             <% if !component.criticalNrOfPieces.nil? and component.inventory > component.criticalNrOfPieces %> 
-              <%= button_to 'Kivét', kivet_component_path(component), {class: "btn btn-primary", method: :get} %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-primary", method: :get} %>
             <% else %>
-              <%= button_to 'Kivét', kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
             <% end %>
           </td> 
         <% end %>
@@ -67,8 +67,8 @@
         <td><%= component.dimension %></td>
         <% unless component.packaging.nil? %> <td><%= link_to component.packaging, component.packaging %> </td> <% else %> <td>NA</td> <% end %>
         <% unless component.manufacturer.nil? %> <td><%= link_to component.manufacturer, component.manufacturer %> </td> <% else %> <td>NA</td> <% end %>
-        <% if can? :update, component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_component_path(component) %></td> <% end %>
-        <% if can? :destroy, component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, component, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
+        <% if can? :update, Component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_component_path(component) %></td> <% end %>
+        <% if can? :destroy, Component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, component, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -78,5 +78,6 @@
 <% if can? :create, Component %>
   <%= button_to 'Új alkatrész ', new_component_path, {class: "btn btn-warning", method: :get } %> 
   <br>
-   <%= link_to "Letöltés Excel formátumban", components_path(format: "xls") %>
+  <br>
+  <%= link_to '<span class="glyphicon-class glyphicon glyphicon-download-alt"> letöltés</span>'.html_safe, components_path(format: "xls") %>
 <% end %>
