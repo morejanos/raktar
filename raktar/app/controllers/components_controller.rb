@@ -34,6 +34,8 @@ class ComponentsController < ApplicationController
   # GET /components
   # GET /components.json
   def index
+    params[:search].strip! if params[:search].class == String
+
     update_search_session(params[:search])
     update_componenttype_session(params[:componenttype])
     
