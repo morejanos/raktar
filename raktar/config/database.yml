@@ -8,9 +8,10 @@ default: &default
   adapter: mysql2
   pool: 5
   timeout: 5000
-  username: mmvillraktar
+  username: raktar_mmvill
   password: mmvill
   encoding: utf8
+  host: 192.168.1.1
 
 development:
   <<: *default
