@@ -7,6 +7,8 @@ class ComponentsController < ApplicationController
     if !params[:kivet].nil? then
       if params[:kivet].to_i > 0 then
 
+        @component = Component.find(params[:id])
+
         if @component.inventory < params[:kivet].to_i then
           redirect_to :back, notice: 'Nem lehet kivenni több alkatrészt, mint amennyi a raktárban van'
           return
@@ -39,8 +41,12 @@ class ComponentsController < ApplicationController
     update_search_session(params[:search])
     
     update_componenttype_session(params[:componenttype])
-    
-    @components = Component.search(session[:search], session[:componenttype]).order(sort_column + " " + sort_direction)
+
+    if (params[:search].nil? || params[:search] == "") && (params[:componenttype].nil? || params[:componenttype] == "" ) then
+	@components = Component.last(5)
+    else
+	@components = Component.search(session[:search], session[:componenttype]).order(sort_column + " " + sort_direction)
+    end
  
     respond_to do |format|
         format.html
