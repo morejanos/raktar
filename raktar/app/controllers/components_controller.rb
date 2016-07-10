@@ -37,6 +37,7 @@ class ComponentsController < ApplicationController
     params[:search].strip! if params[:search].class == String
 
     update_search_session(params[:search])
+    
     update_componenttype_session(params[:componenttype])
     
     @components = Component.search(session[:search], session[:componenttype]).order(sort_column + " " + sort_direction)
@@ -124,19 +125,11 @@ class ComponentsController < ApplicationController
     
     def update_componenttype_session(componenttype)
       if session[:componenttype].nil? && !componenttype.nil? then
-        if componenttype != "all" then
-          session[:componenttype] = componenttype
-        else
-          session[:componenttype] = ""
-        end
+          session[:componenttype] = componenttype[:id]
       elsif session[:componenttype].nil? || componenttype.nil? then
           session[:componenttype] ||= ""
-      elsif session[:componenttype] != componenttype then
-        if componenttype != "all" then
-          session[:componenttype] = componenttype
-        else
-          session[:componenttype] = ""
-        end
+      elsif session[:componenttype] != componenttype[:id] then
+          session[:componenttype] = componenttype[:id]
       end
     end
 
