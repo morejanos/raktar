@@ -20,7 +20,7 @@ class ComponentsController < ApplicationController
           if @component.save
             logger.info "Kivet happend by #{current_user} on item #{@component.name} in #{params[:kivet]} pieces. New number of pieces is #{@component.inventory}."
             Usermailer.criticalNrOfPieces_email(@component).deliver if @component.inventory <= @component.criticalNrOfPieces
-            format.html { redirect_to components_path, notice: "#{params[:kivet]} db: #{@component.name} alkatrész sikeresen kivételezésre került."  }
+            format.html { redirect_to :back, notice: "#{params[:kivet]} db: #{@component.name} alkatrész sikeresen kivételezésre került."  }
             format.json { render :show, status: :created, location: @component }
           else
             format.html { redirect_to @component, alert: 'Hiba lépett fel a mentés közben.' }
@@ -42,10 +42,10 @@ class ComponentsController < ApplicationController
     
     update_componenttype_session(params[:componenttype])
 
-    if (params[:search].nil? || params[:search] == "") && (params[:componenttype].nil? || params[:componenttype] == "" ) then
-	@components = Component.last(5)
+    if ((session[:search].nil? || session[:search] == "") && (session[:componenttype].nil? || session[:componenttype] == "" )) then
+        @components = Component.last(5)
     else
-	@components = Component.search(session[:search], session[:componenttype]).order(sort_column + " " + sort_direction)
+        @components = Component.search(session[:search], session[:componenttype]).order(sort_column + " " + sort_direction)
     end
  
     respond_to do |format|
