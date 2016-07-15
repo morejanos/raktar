@@ -14,7 +14,13 @@ default: &default
   host: 192.168.1.1
 
 development:
-  <<: *default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  username: mmvillraktar
+  password: mmvill1234_MMVILL
+  encoding: utf8
+  host: 192.168.1.105
   database: raktar_development
 
 # Warning: The database defined as "test" will be erased and
