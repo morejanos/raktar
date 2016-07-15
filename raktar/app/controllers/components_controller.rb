@@ -19,9 +19,15 @@ class ComponentsController < ApplicationController
         respond_to do |format|
           if @component.save
             logger.info "Kivet happend by #{current_user} on item #{@component.name} in #{params[:kivet]} pieces. New number of pieces is #{@component.inventory}."
-            Usermailer.criticalNrOfPieces_email(@component).deliver if @component.inventory <= @component.criticalNrOfPieces
-            format.html { redirect_to :back, notice: "#{params[:kivet]} db: #{@component.name} alkatrész sikeresen kivételezésre került."  }
-            format.json { render :show, status: :created, location: @component }
+            
+            if (!@component.criticalNrOfPieces.nil? && @component.criticalNrOfPieces != 0) then
+                Usermailer.criticalNrOfPieces_email(@component).deliver if @component.inventory <= @component.criticalNrOfPieces
+                format.html { redirect_to :back, notice: "#{params[:kivet]} db: #{@component.name} alkatrész sikeresen kivételezésre került."  }
+            else
+                format.html { redirect_to :back, notice: "#{params[:kivet]} db: #{@component.name} alkatrész sikeresen kivételezésre került.", alert: "Ennek az alkatrésznek hiányzik a rendeléshez szükséges darabszáma!!"  }
+                format.json { render :show, status: :created, location: @component }
+            end
+            
           else
             format.html { redirect_to @component, alert: 'Hiba lépett fel a mentés közben.' }
             format.json { render json: @component.errors, status: :unprocessable_entity }
