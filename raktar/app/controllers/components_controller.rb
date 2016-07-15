@@ -10,7 +10,7 @@ class ComponentsController < ApplicationController
         @component = Component.find(params[:id])
 
         if @component.inventory < params[:kivet].to_i then
-          redirect_to :back, notice: 'Nem lehet kivenni több alkatrészt, mint amennyi a raktárban van'
+          redirect_to :back, alert: 'Nem lehet kivenni több alkatrészt, mint amennyi a raktárban van'
           return
         end
 
