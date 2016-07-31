@@ -7,7 +7,7 @@
       <%= field_set_tag do %>
         <%= search_field_tag :search, session[:search], placeholder: 'Írja ide a keresett szót...', :autofocus => true  %>
         <%= submit_tag "Keresés", name: nil %>
-        <%= collection_select(:componenttype, :id, Componenttype.all, :id, :name, {:prompt => 'Összes Alkatrész Típus'}) %>
+        <%= collection_select(:componenttype, :id, Componenttype.order('name ASC'), :id, :name, {:prompt => 'Összes Alkatrész Típus'}) %>
       <% end %>
   </p>
 <% end %>
