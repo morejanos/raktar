@@ -16,9 +16,9 @@ class Component < ActiveRecord::Base
         if !search.nil? && !search.empty?
           if !type.nil? && !type.empty?
             found = self.where("componenttype_id = ?", "#{type}")
-            found = found.where("name LIKE ? OR partnumber LIKE ? OR inductivity LIKE ? OR power LIKE ? OR voltage LIKE ? OR current LIKE ? OR resistance LIKE ? OR dimension LIKE ? OR temperature LIKE ? OR capacity LIKE ? OR location LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+            found = found.where("name REGEXP ? OR partnumber REGEXP ? OR inductivity REGEXP ? OR power REGEXP ? OR voltage REGEXP ? OR current REGEXP ? OR resistance REGEXP ? OR dimension REGEXP ? OR temperature REGEXP ? OR capacity REGEXP ? OR location REGEXP ?", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}")
           else
-            found = self.where("name LIKE ? OR partnumber LIKE ? OR inductivity LIKE ? OR power LIKE ? OR voltage LIKE ? OR current LIKE ? OR resistance LIKE ? OR dimension LIKE ? OR temperature LIKE ? OR capacity LIKE ? OR location LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+            found = self.where("name REGEXP ? OR partnumber REGEXP ? OR inductivity REGEXP ? OR power REGEXP ? OR voltage REGEXP ? OR current REGEXP ? OR resistance REGEXP ? OR dimension REGEXP ? OR temperature REGEXP ? OR capacity REGEXP ? OR location REGEXP ?", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}", "#{search}")
 
           end
         else
