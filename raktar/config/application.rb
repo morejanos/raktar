@@ -26,6 +26,6 @@ module Raktar
     config.active_record.raise_in_transactional_callbacks = true
 
     # Whitelist IPS
-    config.web_console.whitelisted_ips = '192.168.1.0/16'
+    #config.web_console.whitelisted_ips = '192.168.1.0/16'
   end
 end

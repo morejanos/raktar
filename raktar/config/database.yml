@@ -11,7 +11,7 @@ default: &default
   username: raktar_mmvill
   password: mmvill
   encoding: utf8
-  host: 192.168.1.1
+  host: 192.168.1.5
 
 development:
   adapter: mysql2
