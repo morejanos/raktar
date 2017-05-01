@@ -22,7 +22,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.raise_delivery_errors = false
-    config.action_mailer.default_url_options = {host: '192.168.1.119', port: 3000}
+    config.action_mailer.default_url_options = {host: '192.168.1.35', port: 3000}
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
