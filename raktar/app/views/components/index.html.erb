@@ -17,6 +17,7 @@
     <tr>
       <% if can? :kivet, Component %> <th></th> <% end %>
       <th>Név</th>
+      <th>Kép</th>
       <th>Szám</th>
       <th>Készlet</th>
       <th>Lokáció</th>
@@ -48,6 +49,7 @@
           </td> 
         <% end %>
         <td><%= link_to component, component %></td>
+        <td><%= image_tag component.image.url(:thumb) %></td>
         <td><%= component.partnumber %></td>
         <td><%= component.inventory %></td>
         <td><%= component.location%></td>

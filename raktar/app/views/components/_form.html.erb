@@ -1,4 +1,4 @@
-<%= form_for(@component, html: {:class => "form-horizontal"}) do |f| %>
+<%= form_for(@component, url: component_path, html: {:class => "form-horizontal", multipart: true}) do |f| %>
   <% if @component.errors.any? %>
     <div id="error_explanation">
       <h2> Az alkatrész mentése közben a következő hibák léptek fel:</h2>
@@ -14,6 +14,8 @@
   <div class="field">
     <%= f.label "Név" %>
     <%= f.text_field :name, :autofocus => true  %><br>
+    <%= f.label "Kép" %>
+    <%= f.file_field :image %><br>
     <%= f.label "Alkatrész azonosító" %>
     <%= f.text_field :partnumber %><br>
     <%= f.label "Készlet" %>

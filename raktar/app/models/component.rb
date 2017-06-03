@@ -4,11 +4,14 @@ class Component < ActiveRecord::Base
     belongs_to :manufacturer
     belongs_to :user
 
+    has_attached_file :image, styles: { medium: "300x300>", thumb: "80x80>" }
+    validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
     validates :name, presence: true
     validates :componenttype, presence: true
     validates :user_id, presence: true
     validates :inventory, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-   
+
     scope :stock, -> { where("inventory > 0") }
 
     def self.search(search, type)

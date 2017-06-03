@@ -20,7 +20,7 @@ development:
   username: mmvillraktar
   password: mmvill1234_MMVILL
   encoding: utf8
-  host: 192.168.1.106
+  host: 192.168.1.103
   database: raktar_development
 
 # Warning: The database defined as "test" will be erased and

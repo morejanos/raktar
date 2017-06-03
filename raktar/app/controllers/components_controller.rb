@@ -68,10 +68,12 @@ class ComponentsController < ApplicationController
 
   # GET /components/new
   def new
+  byebug
   end
 
   # GET /components/1/edit
   def edit
+  byebug
   end
 
   # POST /components
@@ -120,7 +122,7 @@ class ComponentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
-      params.require(:component).permit(:name, :partnumber, :inventory, :power, :voltage, :current, :resistance, :dimension, :temperature, :capacity, :location, :comment, :comment, :criticalNrOfPieces, :packaging_id, :user_id, :componenttype_id, :manufacturer_id)
+      params.require(:component).permit(:name, :partnumber, :image, :inductivity, :inventory, :power, :voltage, :current, :resistance, :dimension, :temperature, :capacity, :location, :comment, :comment, :criticalNrOfPieces, :packaging_id, :user_id, :componenttype_id, :manufacturer_id)
     end
 
     def update_search_session(search)
