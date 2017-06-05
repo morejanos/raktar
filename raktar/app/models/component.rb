@@ -4,10 +4,10 @@ class Component < ActiveRecord::Base
     belongs_to :manufacturer
     belongs_to :user
 
-    has_attached_file :image, styles: { original: "300x300>", thumb: "80x80>" }
+    has_attached_file :image, styles: { original: "500x500>", thumb: "80x80>" }
     validates_attachment :image,
         content_type: { content_type: ["image/jpeg", "image/gif", "image/png"]},
-        size: { in: 0..1024.kilobytes }
+        size: { in: 0..4096.kilobytes }
 
     validates :name, presence: true
     validates :componenttype, presence: true
