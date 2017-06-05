@@ -1,0 +1,63 @@
+<%= form_for(@component, url: components_path, html: {:class => "form-horizontal", multipart: true}) do |f| %>
+  <% if @component.errors.any? %>
+    <div id="error_explanation">
+      <h2> Az alkatrész mentése közben a következő hibák léptek fel:</h2>
+
+      <ul>
+      <% @component.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Név" %>
+    <%= f.text_field :name, :autofocus => true  %><br>
+    <%= f.label "Kép" %>
+    <%= f.file_field :image %><br>
+    <%= f.label "Alkatrész azonosító" %>
+    <%= f.text_field :partnumber %><br>
+    <%= f.label "Készlet" %>
+    <%= f.number_field :inventory %><br>
+    <%= f.label "Lokáció" %>
+    <%= f.text_field :location %><br>
+    <%= f.label "Alkatrész típusa" %>
+    <%= f.collection_select(:componenttype_id, Componenttype.all, :id, :name, :include_blank => "Válassz") %><br>
+    <%= f.label "Ellenállás" %>
+    <%= f.text_field :resistance %><br>
+    <%= f.label "Kapacitás" %>
+    <%= f.text_field :capacity %><br>
+    <%= f.label "Induktivitás" %>
+    <%= f.text_field :inductivity %><br>
+    <%= f.label "Feszültség" %>
+    <%= f.text_field :voltage %><br>
+    <%= f.label "Áram" %>
+    <%= f.text_field :current %><br>
+    <%= f.label "Teljesítmény" %>
+    <%= f.text_field :power %><br>
+    <%= f.label "Hőmérséklet" %>
+    <%= f.text_field :temperature %><br>
+    <%= f.label "Méretei" %>
+    <%= f.text_field :dimension %><br>
+    <%= f.label "Rendeléshez szükséges darabszám" %>
+    <%= f.number_field :criticalNrOfPieces %><br>
+    <%= f.label "Tokozás" %>
+    <%= f.collection_select(:packaging_id, Packaging.all, :id, :name, :include_blank => "Válassz") %><br>
+
+    <%= f.label "Gyártó" %>
+    <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, :include_blank => "Válassz") %><br>
+    </div>
+
+    <% if !@component.user.nil? %>
+      <%= f.label "Legutobbi felhasználó"%>
+      <%= f.label @component.user%><br>
+    <% end %>
+
+    <%= f.label "Megjegyzés" %>
+    <%= f.text_area :comment %><br>
+  </div>
+  <div class="actions", align="center">
+    <%= f.submit "Mentés", {class: "btn btn-danger", method: :get}  %>
+  </div>
+<% end %>

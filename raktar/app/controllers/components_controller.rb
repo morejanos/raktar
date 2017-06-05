@@ -68,12 +68,10 @@ class ComponentsController < ApplicationController
 
   # GET /components/new
   def new
-  byebug
   end
 
   # GET /components/1/edit
   def edit
-  byebug
   end
 
   # POST /components
