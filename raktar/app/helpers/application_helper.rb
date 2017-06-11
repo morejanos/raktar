@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+ 
   def user_logged_in_msg
     str = ''
     if user_signed_in?
@@ -55,10 +55,10 @@ module ApplicationHelper
 
     ip = Socket.ip_address_list.detect{ |intf| intf.ipv4_private? }
 
-    if ip
+    if ip 
        'http://' + ip.ip_address + ':3000'
     else
-        "http://localhost:3000"
+       'http://localhost:3000'
     end
   end
 
