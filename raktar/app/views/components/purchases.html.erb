@@ -31,8 +31,8 @@
       <tr>
         <% if can? :kivet, Component %>
           <td>
-            <% if !component.criticalNrOfPieces.nil? and component.inventory > component.criticalNrOfPieces %> 
-              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-primary", method: :get} %>
+            <% if component.status == Status.find(1) %> 
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-danger", method: :get} %>
             <% else %>
               <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
             <% end %>
