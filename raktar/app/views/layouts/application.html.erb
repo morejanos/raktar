@@ -30,6 +30,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
         <%= link_to site_name, site_url, :class => "navbar-brand" %>
       </div>
@@ -39,6 +40,7 @@
           <% if user_signed_in? && (can? :read, Componenttype) %> <li class="<%= 'active' if current_page?(componenttypes_path) %>"><%= link_to "Alkatrész Típusok", componenttypes_path %></li> <% end %>
           <% if user_signed_in? && (can? :read, Manufacturer) %> <li class="<%= 'active' if current_page?(manufacturers_path) %>"><%= link_to "Gyártók", manufacturers_path %></li> <% end %>
           <% if user_signed_in? && (can? :read, Packaging) %> <li class="<%= 'active' if current_page?(packagings_path) %>"><%= link_to "Tokozások", packagings_path %></li> <% end %>
+          <% if user_signed_in? && (can? :write, Component) %> <li class="<%= 'active' if current_page?(purchases_path) %>"><%= link_to "Rendelések", purchases_path %></li> <% end %>
         </ul>  
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? && (can? :read, User) %> <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Felhasználók", users_path %></li> <% end %>

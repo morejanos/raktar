@@ -39,6 +39,32 @@ class ComponentsController < ApplicationController
     end
   end
 
+  def purchase
+    if !params[:status_id].nil? then
+      if params[:status_id] == 1 then
+
+        @component = Component.find(params[:id])
+
+        @component.status = 2
+
+        respond_to do |format|
+          if @component.save
+            logger.info "#{@component.name} alkatrész megrendelésre került."
+
+            format.html { redirect_to :back, notice: "#{@component.name} alkatrész megrendelésre került." }
+            format.json { render :show, status: :created, location: @component }
+
+          else
+            format.html { redirect_to @component, alert: 'Hiba lépett fel a mentés közben.' }
+            format.json { render json: @component.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+            flash[:alert] = "Alkatrész megrendelése sikertelen: #{@component.name}"
+      end
+    end
+  end
+
   # GET /components
   # GET /components.json
   def index
@@ -120,7 +146,7 @@ class ComponentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
-      params.require(:component).permit(:name, :partnumber, :image, :inductivity, :inventory, :power, :voltage, :current, :resistance, :dimension, :temperature, :capacity, :location, :comment, :comment, :criticalNrOfPieces, :packaging_id, :user_id, :componenttype_id, :manufacturer_id)
+      params.require(:component).permit(:name, :partnumber, :image, :inductivity, :inventory, :power, :voltage, :current, :resistance, :dimension, :temperature, :capacity, :location, :comment, :criticalNrOfPieces, :packaging_id, :user_id, :componenttype_id, :manufacturer_id, :status_id)
     end
 
     def update_search_session(search)

@@ -3,7 +3,8 @@ class Component < ActiveRecord::Base
     belongs_to :packaging
     belongs_to :manufacturer
     belongs_to :user
-
+    belongs_to :status
+    
     has_attached_file :image, styles: { original: "500x500>", thumb: "80x80>" }
     validates_attachment :image,
         content_type: { content_type: ["image/jpeg", "image/gif", "image/png"]},
@@ -14,7 +15,8 @@ class Component < ActiveRecord::Base
     validates :user_id, presence: true
     validates :inventory, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
     validates :criticalNrOfPieces, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
+    validates :location, presence: true
+    
     scope :stock, -> { where("inventory > 0") }
 
     def self.search(search, type)

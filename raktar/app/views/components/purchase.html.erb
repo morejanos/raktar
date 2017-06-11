@@ -1,0 +1,80 @@
+<div class="text-center">
+    <h2><strong>Rendelési igények</strong></h2>
+</div>
+
+<%= form_tag components_path, { class: "form-group", :method => 'get'} do %>
+    <p>
+      <%= field_set_tag do %>
+        <%= search_field_tag :search, session[:search], placeholder: 'Írja ide a keresett szót...', :autofocus => true  %>
+        <%= submit_tag "Keresés", name: nil %>
+        <%= collection_select(:componenttype, :id, Componenttype.order('name ASC'), :id, :name, {:prompt => 'Összes Alkatrész Típus'}) %>
+      <% end %>
+  </p>
+<% end %>
+
+<table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <% if can? :kivet, Component %> <th></th> <% end %>
+      <th>Név</th>
+      <th>Kép</th>
+      <th>Szám</th>
+      <th>Készlet</th>
+      <th>Lokáció</th>
+      <th>Típus</th>
+      <th>Ell.</th>
+      <th>Kap.</th>
+      <th>Ind.</th>
+      <th>Fesz.</th>
+      <th>Áram</th>
+      <th>Telj.</th>
+      <th>Hőm.</th>
+      <th>Méret</th>
+      <th>Tok</th>
+      <th>Gyártó</th>
+      <% if can? :update, Component %> <th></th> <% end %>
+      <% if can? :destroy, Component %> <th></th> <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @components.each do |component| %>
+      <tr>
+        <% if can? :kivet, Component %>
+          <td>
+            <% if !component.criticalNrOfPieces.nil? and component.inventory > component.criticalNrOfPieces %> 
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-primary", method: :get} %>
+            <% else %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
+            <% end %>
+          </td> 
+        <% end %>
+        <td><%= link_to component, component %></td>
+        <td><%= link_to image_tag(component.image.url(:thumb)), component.image.url(:original) %></td>
+        <td><%= component.partnumber %></td>
+        <td><%= component.inventory %></td>
+        <td><%= component.location%></td>
+        <% unless component.componenttype.nil? %> <td><%= link_to component.componenttype, component.componenttype %> </td> <% else %> <td> "NA" </td> <% end %>
+        <td><%= component.resistance %></td>
+        <td><%= component.capacity %></td>
+        <td><%= component.inductivity %></td>
+        <td><%= component.voltage %></td>
+        <td><%= component.current %></td>
+        <td><%= component.power %></td>
+        <td><%= component.temperature %></td>
+        <td><%= component.dimension %></td>
+        <% unless component.packaging.nil? %> <td><%= link_to component.packaging, component.packaging %> </td> <% else %> <td>NA</td> <% end %>
+        <% unless component.manufacturer.nil? %> <td><%= link_to component.manufacturer, component.manufacturer %> </td> <% else %> <td>NA</td> <% end %>
+        <% if can? :update, Component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_component_path(component) %></td> <% end %>
+        <% if can? :destroy, Component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, component, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if can? :create, Component %>
+  <%= button_to 'Új alkatrész ', new_component_path, {class: "btn btn-warning", method: :get } %> 
+  <br>
+  <br>
+  <%= link_to '<span class="glyphicon-class glyphicon glyphicon-download-alt"> letöltés</span>'.html_safe, components_path(format: "xls") %>
+<% end %>

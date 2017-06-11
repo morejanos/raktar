@@ -12,20 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "*Név" %>
+    <%= f.label "* Név" %>
     <%= f.text_field :name, :autofocus => true  %><br>
-    <%= f.label "*Alkatrész típusa" %>
+    <%= f.label "* Alkatrész típusa" %>
     <%= f.collection_select(:componenttype_id, Componenttype.all, :id, :name, :include_blank => "Válassz") %><br>
-    <%= f.label "*Készlet" %>
+    <%= f.label "* Készlet" %>
     <%= f.number_field :inventory %><br>
-    <%= f.label "*Rendeléshez szükséges darabszám" %>
+    <%= f.label "* Rendeléshez szükséges darabszám" %>
     <%= f.number_field :criticalNrOfPieces %><br>
+    <%= f.label "* Lokáció" %>
+    <%= f.text_field :location %><br>
+    <hr>
     <%= f.label "Kép" %>
     <%= f.file_field :image %><br>
+    <%= f.label "Rendelési státusz" %>
+    <%= f.collection_select(:status_id, Status.all, :id, :name, :include_blank => "Válassz") %><br>
     <%= f.label "Alkatrész azonosító" %>
     <%= f.text_field :partnumber %><br>
-    <%= f.label "Lokáció" %>
-    <%= f.text_field :location %><br>
     <%= f.label "Ellenállás" %>
     <%= f.text_field :resistance %><br>
     <%= f.label "Kapacitás" %>

@@ -32,6 +32,11 @@ module ApplicationHelper
 			 displaytext: 'Tokozások',
 			 controllername: 'packagings',
 			 linkurl: packagings_path
+			},
+			{
+			 displaytext: 'Rendelések',
+			 controllername: 'components',
+			 linkurl: purchases_path
 			}
 		]
 	end
@@ -44,13 +49,16 @@ module ApplicationHelper
     "Raktár nyilvántartó"
   end
 
+  require 'socket'
+
   def site_url
-    if Rails.env.production?
-    # Place your production URL in the quotes below
-    "http://raktar.mmvill.hu"
+
+    ip = Socket.ip_address_list.detect{ |intf| intf.ipv4_private? }
+
+    if ip
+       'http://' + ip.ip_address + ':3000'
     else
-    # Our dev & test URL
-    "http://localhost:3000"
+        "http://localhost:3000"
     end
   end
 

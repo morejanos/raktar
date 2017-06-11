@@ -8,3 +8,6 @@
 
 perm = Permission.create([{ name: 'administrator'}, {name: 'worker'}, {name: 'poweruser'}])
 User.create(name: 'Admin', permission: perm.first )
+
+Status.create([{ name: 'rendelési igény'}, {name: 'megrendelve'}, {name: 'nincs rendelési igény'}])
+
