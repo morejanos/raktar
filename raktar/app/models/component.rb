@@ -18,7 +18,9 @@ class Component < ActiveRecord::Base
     validates :location, presence: true
     
     scope :stock, -> { where("inventory > 0") }
-
+    scope :status, -> (status)  { where status: status }
+    
+    
     def self.search(search, type)
 
         if !search.nil? && !search.empty?

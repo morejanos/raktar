@@ -40,8 +40,8 @@
           <% if user_signed_in? && (can? :read, Componenttype) %> <li class="<%= 'active' if current_page?(componenttypes_path) %>"><%= link_to "Alkatrész Típusok", componenttypes_path %></li> <% end %>
           <% if user_signed_in? && (can? :read, Manufacturer) %> <li class="<%= 'active' if current_page?(manufacturers_path) %>"><%= link_to "Gyártók", manufacturers_path %></li> <% end %>
           <% if user_signed_in? && (can? :read, Packaging) %> <li class="<%= 'active' if current_page?(packagings_path) %>"><%= link_to "Tokozások", packagings_path %></li> <% end %>
-          <% if user_signed_in? && (can? :write, Component) %> <li class="<%= 'active' if current_page?(purchases_path) %>"><%= link_to "Rendelések", purchases_path %></li> <% end %>
-        </ul>  
+          <% if user_signed_in? && (can? :update, Component) %> <li class="<%= 'active' if current_page?(purchases_path) %>"><%= link_to "Rendelések", purchases_path %></li> <% end %>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? && (can? :read, User) %> <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Felhasználók", users_path %></li> <% end %>
           <% if user_signed_in? %> <li> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-user"> </span>'.html_safe + "  #{current_user}", edit_user_registration_path %></li> <% end %>

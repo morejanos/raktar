@@ -14,7 +14,8 @@ class Ability
       can :update, Component
       can :destroy, Component
       can :kivet, Component
-    
+      can :purchases, Component
+      
       can :read, Componenttype
       can :create, Componenttype
       can :update, Componenttype
@@ -29,6 +30,11 @@ class Ability
       can :create, Manufacturer
       can :update, Manufacturer
       can :destroy, Manufacturer
+
+      can :read, Status
+      can :create, Status
+      can :update, Status
+      can :destroy, Status
 
     elsif user.worker?
       can :read, Component
