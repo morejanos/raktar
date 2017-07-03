@@ -28,7 +28,7 @@ class ComponentsController < ApplicationController
 
             if (!@component.criticalNrOfPieces.nil? && @component.criticalNrOfPieces != 0) then
 
-                if @component.status == 1 then
+                if @component.status == Status.find(1) then
                     Usermailer.criticalNrOfPieces_email(@component).deliver
                 end
 
