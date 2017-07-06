@@ -1,6 +1,14 @@
 <div class="text-center">
-    <h2><strong>Rendelésre váró alkatrészek</strong></h2>
+    <h2><strong>Rendelések</strong></h2>
 </div>
+
+<%= form_tag purchases_path, { class: "form-group", :method => 'get'} do %>
+    <p>
+      <%= field_set_tag do %>
+	      <%= collection_select(:status, :id, Status.all, :id, :name, {:selected => session[:status]},{ :onchange => "this.form.submit();"}) %>
+      <% end %>
+  </p>
+<% end %>
 
 <table id="datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
@@ -33,6 +41,10 @@
           <td>
             <% if component.status == Status.find(1) %> 
               <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-danger", method: :get} %>
+            <% elsif component.status == Status.find(2) %> 
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-info", method: :get} %>
+            <% elsif component.status == Status.find(3) %> 
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-success", method: :get} %>
             <% else %>
               <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
             <% end %>

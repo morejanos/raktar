@@ -79,10 +79,15 @@ class ComponentsController < ApplicationController
     params[:search].strip! if params[:search].class == String
 
     update_search_session(params[:search])
-    
-    update_componenttype_session(params[:componenttype])
 
-    @components = Component.status(1)
+#    @components = Component.search(session[:search], session[:status]).order(sort_column + " " + sort_direction)
+    if params[:status].nil? then
+        @components = Component.status(1)
+        session[:status] = Component.status(1)
+    else
+        @components = Component.status(params[:status][:id])
+        session[:status] = params[:status][:id]
+    end
 
   end
 
@@ -92,7 +97,7 @@ class ComponentsController < ApplicationController
     params[:search].strip! if params[:search].class == String
 
     update_search_session(params[:search])
-    
+
     update_componenttype_session(params[:componenttype])
 
     if ((session[:search].nil? || session[:search] == "") && (session[:componenttype].nil? || session[:componenttype] == "" )) then
@@ -126,6 +131,10 @@ class ComponentsController < ApplicationController
   def create
     @component.user_id = current_user.id
 
+    if @component.status.nil? then
+	@component.status = Status.find(3) # nincs megrendelési igény beállítása
+    end
+
     respond_to do |format|
       if @component.save
         format.html { redirect_to components_path, notice: "Alkatrész sikeresen elkészült: #{@component.name}" }
@@ -141,6 +150,11 @@ class ComponentsController < ApplicationController
   # PATCH/PUT /components/1.json
   def update
     @component.user_id = current_user.id
+
+    if @component.status.nil? then
+	@component.status = Status.find(3) # nincs megrendelési igény beállítása
+    end
+
     respond_to do |format|
       if @component.update(component_params)
         Usermailer.criticalNrOfPieces_email(@component).deliver if @component.inventory <= @component.criticalNrOfPieces 
