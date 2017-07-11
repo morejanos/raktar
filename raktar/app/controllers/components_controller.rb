@@ -17,7 +17,7 @@ class ComponentsController < ApplicationController
         @component.inventory -= params[:kivet].to_i
 
         if @component.inventory <= @component.criticalNrOfPieces then
-            if @component.status != Status.find(1) then
+            if @component.status != Status.find(2) then
                 @component.status = Status.find(1)
             end
         end
@@ -55,7 +55,7 @@ class ComponentsController < ApplicationController
 
         @component = Component.find(params[:id])
 
-        @component.status = 2
+        @component.status = Status.find(2)
 
         respond_to do |format|
           if @component.save
