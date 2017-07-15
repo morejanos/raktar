@@ -9,6 +9,11 @@ class ComponentTest < ActiveSupport::TestCase
 
   test "there should not save without an inventory" do
     comp = components(:ell1)
+
+    comp.image = File.new("test/fixtures/missing.png")
+
+    comp.status = Status.find(1)
+
     assert comp.valid?, "Test Component should be valid"
 
     comp.inventory = nil

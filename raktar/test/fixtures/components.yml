@@ -13,7 +13,9 @@ ell1:
         inductivity: 12mH
         current: 1A
         resistance: 13 Ohm
-        dimension: 
+        location: "2RL"
+        status: 1
+        dimension:
         temperature:
         capacity:
         comment:
