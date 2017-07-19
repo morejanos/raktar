@@ -181,7 +181,7 @@ class ComponentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
-      params.require(:component).permit(:name, :partnumber, :image, :inductivity, :inventory, :power, :voltage, :current, :resistance, :dimension, :temperature, :capacity, :location, :comment, :criticalNrOfPieces, :packaging_id, :user_id, :componenttype_id, :manufacturer_id, :status_id)
+      params.require(:component).permit(:name, :partnumber, :image, :inductivity, :inventory, :power, :voltage, :current, :resistance, :dimension, :temperature, :capacity, :location, :comment, :criticalNrOfPieces, :packaging_id, :user_id, :componenttype_id, :manufacturer_id, :status_id, :purchase_date, :purchase_arrival_date)
     end
 
     def update_search_session(search)

@@ -11,34 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706062746) do
+ActiveRecord::Schema.define(version: 20170719174302) do
 
   create_table "components", force: :cascade do |t|
-    t.string   "name",               limit: 255
-    t.string   "partnumber",         limit: 255
-    t.integer  "inventory",          limit: 4
-    t.string   "inductivity",        limit: 255
-    t.string   "power",              limit: 255
-    t.string   "voltage",            limit: 255
-    t.string   "current",            limit: 255
-    t.string   "resistance",         limit: 255
-    t.string   "dimension",          limit: 255
-    t.string   "temperature",        limit: 255
-    t.string   "capacity",           limit: 255
-    t.string   "location",           limit: 255
-    t.string   "comment",            limit: 255
-    t.integer  "criticalNrOfPieces", limit: 4
-    t.integer  "packaging_id",       limit: 4
-    t.integer  "manufacturer_id",    limit: 4
-    t.integer  "user_id",            limit: 4
-    t.integer  "componenttype_id",   limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
-    t.integer  "image_file_size",    limit: 4
+    t.string   "name",                  limit: 255
+    t.string   "partnumber",            limit: 255
+    t.integer  "inventory",             limit: 4
+    t.string   "inductivity",           limit: 255
+    t.string   "power",                 limit: 255
+    t.string   "voltage",               limit: 255
+    t.string   "current",               limit: 255
+    t.string   "resistance",            limit: 255
+    t.string   "dimension",             limit: 255
+    t.string   "temperature",           limit: 255
+    t.string   "capacity",              limit: 255
+    t.string   "location",              limit: 255
+    t.string   "comment",               limit: 255
+    t.integer  "criticalNrOfPieces",    limit: 4
+    t.integer  "packaging_id",          limit: 4
+    t.integer  "manufacturer_id",       limit: 4
+    t.integer  "user_id",               limit: 4
+    t.integer  "componenttype_id",      limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "image_file_name",       limit: 255
+    t.string   "image_content_type",    limit: 255
+    t.integer  "image_file_size",       limit: 4
     t.datetime "image_updated_at"
-    t.integer  "status_id",          limit: 4
+    t.integer  "status_id",             limit: 4
+    t.datetime "purchase_date"
+    t.datetime "purchase_arrival_date"
   end
 
   add_index "components", ["status_id"], name: "index_components_on_status_id", using: :btree

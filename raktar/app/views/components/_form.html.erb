@@ -27,6 +27,10 @@
     <%= f.file_field :image %><br>
     <%= f.label "Rendelési státusz" %>
     <%= f.collection_select(:status_id, Status.all, :id, :name, :include_blank => "Válassz") %><br>
+    <%= f.label "Rendelési dátum" %>
+    <%= f.datetime_field :purchase_date %><br>
+    <%= f.label "Rendelés várható beérkezési dátuma" %>
+    <%= f.datetime_field :purchase_arrival_date %><br>
     <%= f.label "Alkatrész azonosító" %>
     <%= f.text_field :partnumber %><br>
     <%= f.label "Ellenállás" %>

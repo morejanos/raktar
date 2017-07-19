@@ -26,8 +26,9 @@
       <th>Fesz.</th>
       <th>Áram</th>
       <th>Telj.</th>
-      <th>Hőm.</th>
       <th>Méret</th>
+      <th>Rend.Dátum</th>
+      <th>Beérk.Dátum</th>
       <th>Tok</th>
       <th>Gyártó</th>
       <% if can? :update, Component %> <th></th> <% end %>
@@ -62,8 +63,9 @@
         <td><%= component.voltage %></td>
         <td><%= component.current %></td>
         <td><%= component.power %></td>
-        <td><%= component.temperature %></td>
         <td><%= component.dimension %></td>
+        <td><%= if component.status == Status.find(2) && !component.purchase_date.nil? then component.purchase_date.to_date else "NA" end %></td>
+        <td><%= if component.status == Status.find(2) && !component.purchase_arrival_date.nil? then component.purchase_arrival_date.to_date else "NA" end %></td>
         <% unless component.packaging.nil? %> <td><%= link_to component.packaging, component.packaging %> </td> <% else %> <td>NA</td> <% end %>
         <% unless component.manufacturer.nil? %> <td><%= link_to component.manufacturer, component.manufacturer %> </td> <% else %> <td>NA</td> <% end %>
         <% if can? :update, Component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_component_path(component) %></td> <% end %>
