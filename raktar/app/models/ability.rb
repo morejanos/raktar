@@ -9,32 +9,13 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.poweruser?
-      can :read, Component
-      can :create, Component
-      can :update, Component
-      can :destroy, Component
+      can :manage, Component
       can :kivet, Component
       can :purchases, Component
-      
-      can :read, Componenttype
-      can :create, Componenttype
-      can :update, Componenttype
-      can :destroy, Componenttype
-
-      can :read, Packaging
-      can :create, Packaging
-      can :update, Packaging
-      can :destroy, Packaging
-
-      can :read, Manufacturer
-      can :create, Manufacturer
-      can :update, Manufacturer
-      can :destroy, Manufacturer
-
-      can :read, Status
-      can :create, Status
-      can :update, Status
-      can :destroy, Status
+      can :manage, Componenttype
+      can :manage, Packaging
+      can :manage, Manufacturer
+      can :manage, Status
 
     elsif user.worker?
       can :read, Component
