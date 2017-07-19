@@ -13,6 +13,7 @@
 
 # Ignore public system directory
 /public/system/*
+/public/assets/*
 
 # Ignore all logfiles and tempfiles.
 /log/*
