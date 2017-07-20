@@ -22,6 +22,15 @@
 <p>
   <strong>Rendelési státusz:</strong>
   <%= @component.status %>
+  <% if @component.status == Status.find(2) && !@component.purchase_date.nil? then %>
+    <strong>  Rendelés dátuma:</strong>
+    <%= @component.purchase_date.to_date %>
+	<% if !@component.purchase_arrival_date.nil? then %>
+    	    <strong>  Megérkezés dátuma:</strong>
+        <%= @component.purchase_arrival_date.to_date %>
+	<% end %>
+  <% end %>
+  
 </p>
 
 <p>

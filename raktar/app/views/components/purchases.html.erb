@@ -26,11 +26,8 @@
       <th>Fesz.</th>
       <th>Áram</th>
       <th>Telj.</th>
-      <th>Méret</th>
       <th>Rend.Dátum</th>
       <th>Beérk.Dátum</th>
-      <th>Tok</th>
-      <th>Gyártó</th>
       <% if can? :update, Component %> <th></th> <% end %>
       <% if can? :destroy, Component %> <th></th> <% end %>
     </tr>
@@ -41,13 +38,13 @@
         <% if can? :kivet, Component %>
           <td>
             <% if component.status == Status.find(1) %> 
-              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-danger", method: :get} %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-warning-sign"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-danger", method: :get} %>
             <% elsif component.status == Status.find(2) %> 
-              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-info", method: :get} %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-ok-sign"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-info", method: :get} %>
             <% elsif component.status == Status.find(3) %> 
-              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-success", method: :get} %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-ok-sign"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-success", method: :get} %>
             <% else %>
-              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-open"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-question-sign"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-warning", method: :get} %>
             <% end %>
           </td> 
         <% end %>
@@ -63,11 +60,8 @@
         <td><%= component.voltage %></td>
         <td><%= component.current %></td>
         <td><%= component.power %></td>
-        <td><%= component.dimension %></td>
         <td><%= if component.status == Status.find(2) && !component.purchase_date.nil? then component.purchase_date.to_date else "NA" end %></td>
         <td><%= if component.status == Status.find(2) && !component.purchase_arrival_date.nil? then component.purchase_arrival_date.to_date else "NA" end %></td>
-        <% unless component.packaging.nil? %> <td><%= link_to component.packaging, component.packaging %> </td> <% else %> <td>NA</td> <% end %>
-        <% unless component.manufacturer.nil? %> <td><%= link_to component.manufacturer, component.manufacturer %> </td> <% else %> <td>NA</td> <% end %>
         <% if can? :update, Component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-pencil"></span>'.html_safe, edit_component_path(component) %></td> <% end %>
         <% if can? :destroy, Component %> <td> <%= link_to '<span class="glyphicon-class glyphicon glyphicon-trash"></span>'.html_safe, component, method: :delete, data: { confirm: 'Biztos, hogy töröli?' } %> </td> <% end %>
       </tr>
