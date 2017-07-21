@@ -1,0 +1,27 @@
+<div class="text-center">
+    <h2><strong>Alkatrész Rendelése</strong></h2>
+</div>
+<br>
+
+    Alkatrész száma: <%= @component.name %><br>
+    Raktári készlet: <%= @component.inventory.to_s %> <br>
+    Lokáció: <%= @component.location %><br>
+    Típusa: <%= @component.componenttype.name %><br>
+    Megjegyzés:<%= @component.comment %><br>
+<br>
+<br>
+<%= form_tag purchase_path, :method => 'get' do %>
+    <p>
+      <%= field_set_tag do %>
+        Rendelés Dátuma:
+        <%= datetime_field_tag :purchase_date, params[:purchase] %>
+        Rendelés Várható megérkezési dátuma:
+        <%= datetime_field_tag :purchase_arrival_date, params[:purchase_arrival_date] %>
+        <%= submit_tag "PurchaseComponent", {class: "btn btn-primary"} %><br>
+      <% end %>
+    </p>
+<% end %>
+
+<br>
+<br>
+<%= button_to "Vissza", purchases_path , {class: "btn btn-warning", method: :get}%>

@@ -50,18 +50,18 @@ class ComponentsController < ApplicationController
   end
 
   def purchase
-    if !params[:status_id].nil? then
-      if params[:status_id] == 1 then
-
-        @component = Component.find(params[:id])
-
+	if params[:commit].nil?  then
+    	    @component = Component.find(params[:id])
+	else
         @component.status = Status.find(2)
+        @component.purchase_date = params[:purchase_date]
+        @component.purchase_arrival_date = params[:purchase_arrival_date]
 
         respond_to do |format|
           if @component.save
             logger.info "#{@component.name} alkatrész megrendelésre került."
 
-            format.html { redirect_to :back, notice: "#{@component.name} alkatrész megrendelésre került." }
+            format.html { redirect_to :purchases, notice: "#{@component.name} alkatrész megrendelésre került." }
             format.json { render :show, status: :created, location: @component }
 
           else
@@ -69,10 +69,7 @@ class ComponentsController < ApplicationController
             format.json { render json: @component.errors, status: :unprocessable_entity }
           end
         end
-      else
-            flash[:alert] = "Alkatrész megrendelése sikertelen: #{@component.name}"
-      end
-    end
+        end
   end
 
   def purchases
@@ -152,7 +149,7 @@ class ComponentsController < ApplicationController
     @component.user_id = current_user.id
 
     if @component.status.nil? then
-	@component.status = Status.find(3) # nincs megrendelési igény beállítása
+        @component.status = Status.find(3) # nincs megrendelési igény beállítása
     end
 
     respond_to do |format|

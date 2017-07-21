@@ -38,7 +38,7 @@
         <% if can? :kivet, Component %>
           <td>
             <% if component.status == Status.find(1) %> 
-              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-warning-sign"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-danger", method: :get} %>
+              <%= link_to '<span class="glyphicon-class glyphicon glyphicon-warning-sign"></span>'.html_safe, purchase_path(component), {class: "btn btn-danger", method: :get} %>
             <% elsif component.status == Status.find(2) %> 
               <%= link_to '<span class="glyphicon-class glyphicon glyphicon-ok-sign"></span>'.html_safe, kivet_component_path(component), {class: "btn btn-info", method: :get} %>
             <% elsif component.status == Status.find(3) %> 
