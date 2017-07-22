@@ -19,7 +19,13 @@ class ComponentsController < ApplicationController
         if @component.inventory <= @component.criticalNrOfPieces then
             if @component.status != Status.find(2) then
                 @component.status = Status.find(1)
+                @component.purchase_date = nil
+                @component.purchase_arrival_date = nil
             end
+        else
+            @component.status = Status.find(3)
+            @component.purchase_date = nil
+            @component.purchase_arrival_date = nil
         end
 
         respond_to do |format|
@@ -45,6 +51,51 @@ class ComponentsController < ApplicationController
         end
       else
             flash[:alert] = "Alkatrész sikertelen kivétele: #{@component.name}"
+      end
+    end
+  end
+
+  def bevet
+    if !params[:bevet].nil? then
+      if params[:bevet].to_i > 0 then
+
+        @component = Component.find(params[:id])
+
+        @component.inventory += params[:bevet].to_i
+
+        if @component.inventory <= @component.criticalNrOfPieces then
+            @component.status = Status.find(1)
+            @component.purchase_date = nil
+            @component.purchase_arrival_date = nil
+        else
+            @component.status = Status.find(3)
+            @component.purchase_date = nil
+            @component.purchase_arrival_date = nil
+        end
+
+        respond_to do |format|
+          if @component.save
+            logger.info "Bevet happend by #{current_user} on item #{@component.name} in #{params[:kivet]} pieces. New number of pieces is #{@component.inventory}."
+
+            if (!@component.criticalNrOfPieces.nil? && @component.criticalNrOfPieces != 0) then
+
+                if @component.status == Status.find(1) then
+                    Usermailer.criticalNrOfPieces_email(@component).deliver
+                end
+
+                format.html { redirect_to :purchases, notice: "#{params[:bevet]} db: #{@component.name} alkatrész sikeresen bevételezésre került."  }
+            else
+                format.html { redirect_to :purchases, notice: "#{params[:bevet]} db: #{@component.name} alkatrész sikeresen bevételezésre került.", alert: "Ennek az alkatrésznek hiányzik a rendeléshez szükséges darabszáma!!"  }
+                format.json { render :show, status: :created, location: @component }
+            end
+
+          else
+            format.html { redirect_to purchase_path, alert: 'Hiba lépett fel a mentés közben.' }
+            format.json { render json: @component.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+            flash[:alert] = "Alkatrész sikertelen bevétele: #{@component.name}"
       end
     end
   end
@@ -128,13 +179,13 @@ class ComponentsController < ApplicationController
   def create
     @component.user_id = current_user.id
 
-    if @component.status.nil? then
-	@component.status = Status.find(3) # nincs megrendelési igény beállítása
+    if params[:component][:status_id] == "" then
+        params[:component][:status_id] = "3" # nincs megrendelési igény beállítása
     end
 
-    if @component.status == Status.find(3) then
-	@component.purchase_date = nil
-	@component.purchase_arrival_date = nil
+    if params[:component][:status_id] == "3" then
+	params[:component][:purchase_date] = ""
+	params[:component][:purchase_arrival_date] = ""
     end
 
     respond_to do |format|
@@ -153,13 +204,13 @@ class ComponentsController < ApplicationController
   def update
     @component.user_id = current_user.id
 
-    if @component.status.nil? then
-        @component.status = Status.find(3) # nincs megrendelési igény beállítása
+    if params[:component][:status_id] == "" then
+        params[:component][:status_id] = "3" # nincs megrendelési igény beállítása
     end
 
-    if @component.status == Status.find(3) then
-	@component.purchase_date = nil
-	@component.purchase_arrival_date = nil
+    if params[:component][:status_id] == "3" then
+	params[:component][:purchase_date] = ""
+	params[:component][:purchase_arrival_date] = ""
     end
 
     respond_to do |format|

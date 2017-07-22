@@ -1,5 +1,5 @@
 <div class="text-center">
-    <h2><strong>Alkatrész Kivét</strong></h2>
+    <h2><strong>Alkatrész Bevétele</strong></h2>
 </div>
 <br>
 
@@ -10,16 +10,16 @@
     Megjegyzés:<%= @component.comment %><br>
 <br>
 <br>
-<%= form_tag kivet_component_path, :method => 'get' do %>
+<%= form_tag bevet_component_path, :method => 'get' do %>
     <p>
       <%= field_set_tag do %>
-        Kivett darabszám: 
-        <%= number_field_tag :kivet, params[:kivet], :autofocus => true %>
-        <%= submit_tag "Kivét", {class: "btn btn-primary"} %><br>
+        Bevett darabszám: 
+        <%= number_field_tag :bevet, params[:bevet], :autofocus => true %>
+        <%= submit_tag "Bevételezés", {class: "btn btn-primary"} %><br>
       <% end %>
     </p>
 <% end %>
 
 <br>
 <br>
-<%= button_to "Vissza", components_path , {class: "btn btn-warning", method: :get}%>
+<%= button_to "Vissza", purchases_path , {class: "btn btn-warning", method: :get}%>
