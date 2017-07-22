@@ -14,10 +14,10 @@
     <p>
       <%= field_set_tag do %>
         Rendelés Dátuma:
-        <%= datetime_field_tag :purchase_date, params[:purchase] %>
+        <%= datetime_field_tag :purchase_date, params[:purchase_date], {:value => Time.now.to_date} %>
         Rendelés Várható megérkezési dátuma:
-        <%= datetime_field_tag :purchase_arrival_date, params[:purchase_arrival_date] %>
-        <%= submit_tag "PurchaseComponent", {class: "btn btn-primary"} %><br>
+        <%= datetime_field_tag :purchase_arrival_date, params[:purchase_arrival_date], {:value => (Time.now + 7.days).to_date} %>
+        <%= submit_tag "Megrendelés", {class: "btn btn-primary"} %><br>
       <% end %>
     </p>
 <% end %>

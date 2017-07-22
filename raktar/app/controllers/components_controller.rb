@@ -132,6 +132,11 @@ class ComponentsController < ApplicationController
 	@component.status = Status.find(3) # nincs megrendelési igény beállítása
     end
 
+    if @component.status == Status.find(3) then
+	@component.purchase_date = nil
+	@component.purchase_arrival_date = nil
+    end
+
     respond_to do |format|
       if @component.save
         format.html { redirect_to components_path, notice: "Alkatrész sikeresen elkészült: #{@component.name}" }
@@ -150,6 +155,11 @@ class ComponentsController < ApplicationController
 
     if @component.status.nil? then
         @component.status = Status.find(3) # nincs megrendelési igény beállítása
+    end
+
+    if @component.status == Status.find(3) then
+	@component.purchase_date = nil
+	@component.purchase_arrival_date = nil
     end
 
     respond_to do |format|
