@@ -12,6 +12,8 @@ class Ability
       can :manage, Component
       can :kivet, Component
       can :purchases, Component
+      can :newpurchase, Component
+
       can :manage, Componenttype
       can :manage, Packaging
       can :manage, Manufacturer
@@ -20,6 +22,7 @@ class Ability
     elsif user.worker?
       can :read, Component
       can :kivet, Component
+      can :newpurchase, Component
 
       can :update, Componenttype
 

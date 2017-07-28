@@ -139,6 +139,35 @@ class ComponentsController < ApplicationController
 
   end
 
+ def newpurchase
+    @component = Component.new
+ end
+ 
+ def post_newpurchase
+    @component = Component.new
+
+    @component.name = params[:component][:name]
+    @component.componenttype_id = params[:component][:componenttype_id]
+    @component.comment = params[:component][:comment]
+
+    @component.user_id = current_user.id
+    @component.status = Status.find(1)
+    @component.inventory = 0
+    @component.criticalNrOfPieces = 1
+    @component.location = 'ÚJ RENDELÉS'
+
+    respond_to do |format|
+      if @component.save
+        format.html { redirect_to components_path, notice: "Alkatrész sikeresen elkészült: #{@component.name}" }
+        format.json { render :show, status: :created, location: @component }
+      else
+        format.html { redirect_to components_path, alert: 'Hiba lépett fel a mentés közben.' }
+        format.json { render json: @component.errors, status: :unprocessable_entity }
+      end
+    end
+
+ end
+ 
   # GET /components
   # GET /components.json
   def index
@@ -177,6 +206,7 @@ class ComponentsController < ApplicationController
   # POST /components
   # POST /components.json
   def create
+  byebug
     @component.user_id = current_user.id
 
     if params[:component][:status_id] == "" then

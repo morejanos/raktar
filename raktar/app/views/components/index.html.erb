@@ -76,6 +76,11 @@
 </table>
 
 <br>
+<p>
+<% if can? :newpurchase, Component %>
+  <%= button_to 'Új alkatrész igénylése', new_purchase_path, {class: "btn btn-info", method: :get } %> 
+<% end %>
+</p>
 <% if can? :create, Component %>
   <%= button_to 'Új alkatrész ', new_component_path, {class: "btn btn-warning", method: :get } %> 
   <br>

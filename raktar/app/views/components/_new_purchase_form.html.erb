@@ -1,0 +1,25 @@
+<%= form_for(@component, url: post_new_purchase_path, html: {:class => "form-horizontal", multipart: true}) do |f| %>
+  <% if @component.errors.any? %>
+    <div id="error_explanation">
+      <h2> Az alkatrész mentése közben a következő hibák léptek fel:</h2>
+
+      <ul>
+      <% @component.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "* Név" %>
+    <%= f.text_field :name, :autofocus => true  %><br>
+    <%= f.label "* Alkatrész típusa" %>
+    <%= f.collection_select(:componenttype_id, Componenttype.all, :id, :name, :include_blank => "Válassz") %><br>
+    <%= f.label "Megjegyzés" %>
+    <%= f.text_area :comment %><br>
+  </div>
+  <div class="actions", align="center">
+    <%= f.submit "Igénylés", {class: "btn btn-danger", method: :get}  %>
+  </div>
+<% end %>

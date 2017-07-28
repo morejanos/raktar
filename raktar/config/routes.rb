@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get 'components/:id/purchase' => 'components#purchase', as: :purchase
   get 'components/purchases' => 'components#purchases', as: :purchases
 
+  get 'components/newpurchase' => 'components#newpurchase', as: :new_purchase
+  post 'components/newpurchase' => 'components#post_newpurchase', as: :post_new_purchase
+
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :components
     resources :manufacturers
