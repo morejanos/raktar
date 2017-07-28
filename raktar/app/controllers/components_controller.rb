@@ -206,7 +206,6 @@ class ComponentsController < ApplicationController
   # POST /components
   # POST /components.json
   def create
-  byebug
     @component.user_id = current_user.id
 
     if params[:component][:status_id] == "" then
