@@ -13,6 +13,7 @@ class Ability
       can :kivet, Component
       can :purchases, Component
       can :newpurchase, Component
+      can :post_newpurchase, Component
 
       can :manage, Componenttype
       can :manage, Packaging
@@ -23,6 +24,7 @@ class Ability
       can :read, Component
       can :kivet, Component
       can :newpurchase, Component
+      can :post_newpurchase, Component
 
       can :update, Componenttype
 
