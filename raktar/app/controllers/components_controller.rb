@@ -158,8 +158,12 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
+
+        Usermailer.newPurchase_email(@component).deliver
         format.html { redirect_to components_path, notice: "Alkatrész sikeresen elkészült: #{@component.name}" }
         format.json { render :show, status: :created, location: @component }
+
+
       else
         format.html { redirect_to components_path, alert: 'Hiba lépett fel a mentés közben.' }
         format.json { render json: @component.errors, status: :unprocessable_entity }

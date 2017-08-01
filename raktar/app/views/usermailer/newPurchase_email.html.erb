@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-eduiv='Content-Type'/>
+    </head>
+    <body>
+        <h1> Új alkatrész rendelési igény leadva </h1>
+        <br>
+        <p>
+        Alkatrész neve:         <b><%= @component.name %></b> <br>
+        Alkatrész típusa:       <b><%= @component.componenttype %></b> <br>
+        Alkatrész lokációja:    <b><%= @component.location %></b> <br> <br>
+        Megjegyzés:             <b><%= @component.comment %></b> <br> <br>
+        Igénylő:                <b><%= @component.user %></b> <br> <br>
+        Igénylés dátuma:        <b><%= DateTime.now.to_date %></b> <br> <br>
+        </p>
+        <%= link_to "Alkatrész link", @component %>
+    </body>
+</html>
