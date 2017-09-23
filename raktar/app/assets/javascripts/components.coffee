@@ -6,3 +6,9 @@ jQuery ->
   $("#datatables").DataTable({ 
     responsive: true
   });
+jQuery ->
+  $( ".hasDatePicker" ).datepicker({
+   dateFormat: "yy-mm-dd";
+   firstDay: 1;
+   showMonthAfterYear: true;
+  });
