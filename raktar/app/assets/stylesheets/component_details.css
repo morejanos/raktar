@@ -15,6 +15,14 @@
   float: left;
 }
 
+.field label {
+ float: left;
+ width: 250px;
+ text-align: right;
+ padding-top: 3px;
+ margin-right: 5px;
+}
+
 footer {
   clear: left;
 }

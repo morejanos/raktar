@@ -26,9 +26,9 @@
     <%= f.collection_select(:status_id, Status.all, :id, :name, :include_blank => "Válassz") %><br>
     <hr>
     <%= f.label "Rendelési dátum" %>
-    <%= f.datetime_field :purchase_date %><br>
+    <%= f.datetime_field :purchase_date,  :class => "hasDatePicker" %><br>
     <%= f.label "Rendelés várható beérkezési dátuma" %>
-    <%= f.datetime_field :purchase_arrival_date %><br>
+    <%= f.datetime_field :purchase_arrival_date, :class => "hasDatePicker" %><br>
     <%= f.label "Kép" %>
     <%= f.file_field :image %><br>
     <%= f.label "Alkatrész azonosító" %>
