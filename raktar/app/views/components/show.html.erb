@@ -1,12 +1,16 @@
+<div class="text-center">
+	<h2><strong>Alkatrész adatai</strong></h2>
+</div>
 
+<div class="component_details">
 <p>
   <strong>Alkatrész neve:</strong>
-  <%= @component.name %>
+  <%= @component.name.getValue %>
 </p>
 
 <p>
   <strong>Száma:</strong>
-  <%= @component.partnumber %>
+  <%= @component.partnumber.getValue %>
 </p>
 
 <p>
@@ -16,7 +20,7 @@
 
 <p>
   <strong>Lokáció:</strong>
-  <%= @component.location %>
+  <%= @component.location.getValue %>
 </p>
 
 <p>
@@ -40,42 +44,41 @@
 
 <p>
   <strong>Ellenállás:</strong>
-  <%= @component.resistance %>
+  <%= @component.resistance.getValue %>
 </p>
 
 <p>
   <strong>Kapacitás:</strong>
-  <%= @component.capacity %>
+  <%= @component.capacity.getValue %>
 </p>
-
 <p>
   <strong>Induktivitás:</strong>
-  <%= @component.inductivity %>
+  <%= @component.inductivity.getValue %>
 </p>
 
 <p>
   <strong>Feszültség:</strong>
-  <%= @component.voltage %>
+  <%= @component.voltage.getValue %>
 </p>
 
 <p>
   <strong>Áram:</strong>
-  <%= @component.current %>
+  <%= @component.current.getValue %>
 </p>
 
 <p>
   <strong>Teljesítmény:</strong>
-  <%= @component.power %>
+  <%= @component.power.getValue %>
 </p>
 
 <p>
   <strong>Hőmérséklet:</strong>
-  <%= @component.temperature %>
+  <%= @component.temperature.getValue %>
 </p>
 
 <p>
   <strong>Méret:</strong>
-  <%= @component.dimension %>
+  <%= @component.dimension.getValue %>
 </p>
 
 <p>
@@ -95,16 +98,18 @@
 
 <p>
   <strong>Megjegyzés:</strong>
-  <%= @component.comment %>
+  <%= @component.comment.getValue %>
 </p>
 
 <p>
   <strong>Legutobbi Felhasználó:</strong>
   <%= @component.user %>
 </p>
+</div>
 
+<div class="buttons">
+<%= button_to 'Vissza', components_path, {class: 'btn btn-info', method: :get, align: "left"} %>
 <% if can? :update, @component %> 
   <%= button_to 'Szerkeszt', edit_component_path(@component), {class: "btn btn-danger", align: "center" , method: :get} %> 
 <% end %>
-<br>
-<%= button_to 'Vissza', components_path, {class: 'btn btn-info', method: :get} %>
+</div>

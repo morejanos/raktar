@@ -303,5 +303,17 @@ class ComponentsController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end  
+  end
+
+end
+
+
+class String
+  def getValue
+    if self.to_s == "" then
+      "NA"
+    else
+      self.to_s
+    end
+  end
 end
