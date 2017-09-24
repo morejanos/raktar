@@ -14,9 +14,9 @@
     <p>
       <%= field_set_tag do %>
         Rendelés Dátuma:
-        <%= text_field_tag :purchase_date, params[:purchase_date], :class => "hasDatePicker", :value => Time.now.to_date %>
+        <%= datetime_field_tag :purchase_date, params[:purchase_date], :class => "hasDatePicker", :value => Time.now.to_date %>
         Rendelés Várható megérkezési dátuma:
-        <%= text_field_tag :purchase_arrival_date, params[:purchase_arrival_date], :class => "hasDatePicker", :value => (Time.now + 7.days).to_date %>
+        <%= datetime_field_tag :purchase_arrival_date, params[:purchase_arrival_date], :class => "hasDatePicker", :value => (Time.now + 7.days).to_date %>
         <%= submit_tag "Megrendelés", {class: "btn btn-primary"} %><br>
       <% end %>
     </p>

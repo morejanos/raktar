@@ -10,6 +10,10 @@
   padding-right: 10px;
 }
 
+.component_details p a {
+  padding-right: 10px;
+}
+
 .buttons .btn {
   margin: 15px 150px 15px 10px;
   float: left;

@@ -5,105 +5,108 @@
 <div class="component_details">
 <p>
   <strong>Alkatrész neve:</strong>
-  <%= @component.name.getValue %>
+  <a><%= @component.name %></a>
 </p>
 
 <p>
   <strong>Száma:</strong>
-  <%= @component.partnumber.getValue %>
+  <a><%= @component.partnumber %></a>
 </p>
 
 <p>
   <strong>Készenléti darabszám:</strong>
-  <%= @component.inventory %>
+  <a><%= @component.inventory %></a>
 </p>
 
 <p>
   <strong>Lokáció:</strong>
-  <%= @component.location.getValue %>
+  <a><%= @component.location %></a>
 </p>
 
 <p>
   <strong>Rendelési státusz:</strong>
   <%= @component.status %>
+  </p>
   <% if @component.status == Status.find(2) && !@component.purchase_date.nil? then %>
-    <strong>  Rendelés dátuma:</strong>
-    <%= @component.purchase_date.to_date %>
+	  <p>
+	  	<strong>  Rendelés dátuma:</strong>
+		<a><%= @component.purchase_date.to_date %></a>
+	  </p>
 	<% if !@component.purchase_arrival_date.nil? then %>
-    	    <strong>  Megérkezés dátuma:</strong>
-        <%= @component.purchase_arrival_date.to_date %>
+		<p> 
+			<strong>  Megérkezés dátuma:</strong>
+			<a><%= @component.purchase_arrival_date.to_date %></a>
+		</p>
 	<% end %>
   <% end %>
   
-</p>
-
 <p>
   <strong>Típus:</strong>
-  <%= @component.componenttype %>
+  <a><%= @component.componenttype %></a>
 </p>
 
 <p>
   <strong>Ellenállás:</strong>
-  <%= @component.resistance.getValue %>
+  <a><%= @component.resistance %></a>
 </p>
 
 <p>
   <strong>Kapacitás:</strong>
-  <%= @component.capacity.getValue %>
+  <a><%= @component.capacity %></a>
 </p>
 <p>
   <strong>Induktivitás:</strong>
-  <%= @component.inductivity.getValue %>
+  <a><%= @component.inductivity %></a>
 </p>
 
 <p>
   <strong>Feszültség:</strong>
-  <%= @component.voltage.getValue %>
+  <a><%= @component.voltage %></a>
 </p>
 
 <p>
   <strong>Áram:</strong>
-  <%= @component.current.getValue %>
+  <a><%= @component.current %></a>
 </p>
 
 <p>
   <strong>Teljesítmény:</strong>
-  <%= @component.power.getValue %>
+  <a><%= @component.power %></a>
 </p>
 
 <p>
   <strong>Hőmérséklet:</strong>
-  <%= @component.temperature.getValue %>
+  <a><%= @component.temperature %></a>
 </p>
 
 <p>
   <strong>Méret:</strong>
-  <%= @component.dimension.getValue %>
+  <a><%= @component.dimension %></a>
 </p>
 
 <p>
   <strong>Rendeléshez kritikus darabszám:</strong>
-  <%= @component.criticalNrOfPieces %>
+  <a><%= @component.criticalNrOfPieces %></a>
 </p>
 
 <p>
   <strong>Tokozás:</strong>
-  <%= @component.packaging %>
+  <a><%= @component.packaging %></a>
 </p>
 
 <p>
   <strong>Gyártó:</strong>
-  <%= @component.manufacturer %>
+  <a><%= @component.manufacturer %></a>
 </p>
 
 <p>
   <strong>Megjegyzés:</strong>
-  <%= @component.comment.getValue %>
+  <a><%= @component.comment %></a>
 </p>
 
 <p>
   <strong>Legutobbi Felhasználó:</strong>
-  <%= @component.user %>
+  <a><%= @component.user %></a>
 </p>
 </div>
 
